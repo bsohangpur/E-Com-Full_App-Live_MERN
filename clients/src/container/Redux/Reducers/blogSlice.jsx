@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axois from 'axios';
 
-const url = 'http://localhost:3000/blog/data';
+const url = 'https://e-com-vercel.vercel.app/blog/data';
 
 const Status = Object.freeze({
   Idle: "idle",

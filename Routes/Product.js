@@ -1,5 +1,6 @@
 const express = require('express').Router();
-const ProductData = require('../Database/Product/ProductData');
+const path = require("path");
+const ProductData = require(path.join(__dirname, '../DataBase/Product/ProductData'));
 const Uploads = require('../app')
 
 

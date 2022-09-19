@@ -1,5 +1,4 @@
-import React, { useState, useContext } from 'react';
-import { ContextWrap } from '../../container/contexApi/States';
+import React, { useState } from 'react';
 import NavBar from '../../constant/Navbar/NavBar';
 import Footer from '../../constant/Footer/Footer';
 import Product from '../../container/Product/Product';
@@ -28,8 +27,8 @@ const Shop = () => {
                                         <i className="fa fa-fw fa-chevron-circle-down mt-1"></i>
                                     </button>
                                     <ul className={`${catBtn.genders === true ? "" : "hidden"}  pl-3`}>
-                                        <li><a className=" text-base text-decoration-none" href="#">Men</a></li>
-                                        <li><a className=" text-base text-decoration-none" href="#">Women</a></li>
+                                        <li><a className=" text-base text-decoration-none" href="/">Men</a></li>
+                                        <li><a className=" text-base text-decoration-none" href="/">Women</a></li>
                                     </ul>
                                 </li>
                                 <li className="pb-3">
@@ -38,8 +37,8 @@ const Shop = () => {
                                         <i className="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                                     </button>
                                     <ul id="collapseTwo" className={`${catBtn.sale === true ? "" : "hidden"}  pl-3`}>
-                                        <li><a className=" text-base text-decoration-none" href="#">Sport</a></li>
-                                        <li><a className=" text-base text-decoration-none" href="#">Luxury</a></li>
+                                        <li><a className=" text-base text-decoration-none" href="/">Sport</a></li>
+                                        <li><a className=" text-base text-decoration-none" href="/">Luxury</a></li>
                                     </ul>
                                 </li>
                                 <li className="pb-3">
@@ -48,9 +47,9 @@ const Shop = () => {
                                         <i className="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                                     </button>
                                     <ul id="collapseThree" className={`${catBtn.products === true ? "" : "hidden"}  pl-3`}>
-                                        <li><a className=" text-base text-decoration-none" href="#">Bag</a></li>
-                                        <li><a className=" text-base text-decoration-none" href="#">Sweather</a></li>
-                                        <li><a className=" text-base text-decoration-none" href="#">Sunglass</a></li>
+                                        <li><a className=" text-base text-decoration-none" href="/">Bag</a></li>
+                                        <li><a className=" text-base text-decoration-none" href="/">Sweather</a></li>
+                                        <li><a className=" text-base text-decoration-none" href="/">Sunglass</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -63,13 +62,13 @@ const Shop = () => {
                             <div className="">
                                 <ul className="flex gap-2 list-inline shop-top-menu pb-3 pt-1">
                                     <li className="list-inline-item">
-                                        <a className="h3 text-dark text-decoration-none mr-3" href="#">All</a>
+                                        <a className="h3 text-dark text-decoration-none mr-3" href="/">All</a>
                                     </li>
                                     <li className="list-inline-item">
-                                        <a className="h3 text-dark text-decoration-none mr-3" href="#">Men's</a>
+                                        <a className="h3 text-dark text-decoration-none mr-3" href="/">Men's</a>
                                     </li>
                                     <li className="list-inline-item">
-                                        <a className="h3 text-dark text-decoration-none" href="#">Women's</a>
+                                        <a className="h3 text-dark text-decoration-none" href="/">Women's</a>
                                     </li>
                                 </ul>
                             </div>

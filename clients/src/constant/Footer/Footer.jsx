@@ -11,7 +11,7 @@ const Footer = () => {
                     <div className="">
                         <div className="">
                             <div className="subscription-form">
-                                <h3 className="flex items-center mb-2"><span className="mx-1"><img src="/src/assets/envelope-outline.svg" alt="Image" className="img-fluid" /></span><span>Subscribe to Newsletter</span></h3>
+                                <h3 className="flex items-center mb-2"><span className="mx-1"><img src="/src/assets/envelope-outline.svg" alt="5000" className="img-fluid" /></span><span>Subscribe to Newsletter</span></h3>
 
                                 <form action="#" className="flex gap-4">
                                     <div className="">
@@ -33,14 +33,14 @@ const Footer = () => {
 
                     <div className="mb-5 md:px-12 flex w-full">
                         <div className="w-1/3 mx-4">
-                            <div className="mb-4 footer-logo-wrap"><a href="#" className="footer-logo">LuluCollection<span>.</span></a></div>
+                            <div className="mb-4 footer-logo-wrap"><a href="/" className="footer-logo">LuluCollection<span>.</span></a></div>
                             <p className="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant</p>
 
                             <ul className="list-unstyled custom-social">
-                                <li><a href="#"><span className="fa fa-brands fa-facebook-f"></span></a></li>
-                                <li><a href="#"><span className="fa fa-brands fa-twitter"></span></a></li>
-                                <li><a href="#"><span className="fa fa-brands fa-instagram"></span></a></li>
-                                <li><a href="#"><span className="fa fa-brands fa-linkedin"></span></a></li>
+                                <li><a href="/"><span className="fa fa-brands fa-facebook-f"></span></a></li>
+                                <li><a href="/"><span className="fa fa-brands fa-twitter"></span></a></li>
+                                <li><a href="/"><span className="fa fa-brands fa-instagram"></span></a></li>
+                                <li><a href="/"><span className="fa fa-brands fa-linkedin"></span></a></li>
                             </ul>
                         </div>
 
@@ -58,17 +58,17 @@ const Footer = () => {
                                 <div className="">
                                     <ul className="list-unstyled">
                                         <li><NavLink to='/contact'>Support</NavLink></li>
-                                        <li><a href="#">Knowledge base</a></li>
-                                        <li><a href="#">Live chat</a></li>
+                                        <li><a href="/">Knowledge base</a></li>
+                                        <li><a href="/">Live chat</a></li>
                                     </ul>
                                 </div>
 
                                 <div className="">
                                     <ul className="list-unstyled">
-                                        <li><a href="#">Jobs</a></li>
-                                        <li><a href="#">Our team</a></li>
-                                        <li><a href="#">Leadership</a></li>
-                                        <li><a href="#">Privacy Policy</a></li>
+                                        <li><a href="/">Jobs</a></li>
+                                        <li><a href="/">Our team</a></li>
+                                        <li><a href="/">Leadership</a></li>
+                                        <li><a href="/">Privacy Policy</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -85,7 +85,7 @@ const Footer = () => {
 
                             <div className="text-center">
                                 <ul className="list-unstyled flex gap-4 ms-auto">
-                                    <li className="me-4"><a href="#">Terms &amp; Conditions</a></li>
+                                    <li className="me-4"><a href="/">Terms &amp; Conditions</a></li>
                                 </ul>
                             </div>
 

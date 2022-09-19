@@ -1,7 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ContextWrap } from '../../container/contexApi/States';
 import { blogButton, FetchBlog } from '../../container/Redux/Reducers/blogSlice';
 
 const AdminBlog = () => {
@@ -16,7 +15,7 @@ const AdminBlog = () => {
 
     useEffect(()=>{
         dispatch(FetchBlog())
-    },[])
+    },[dispatch])
 
     const Alert = () => {
 

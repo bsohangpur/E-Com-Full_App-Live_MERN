@@ -36,11 +36,11 @@ const BlogDetail = () => {
                                                 <span className='capitalize text-3xl'>{data.title}</span>
                                                 <h4 className='capitalize text-lg'>{data.creater}</h4>
                                                 <ul className="flex gap-2 my-2">
-                                                    <li><a href="#">Admin</a></li>
+                                                    <li><a href="/">Admin</a></li>
                                                     <hr className='w-0.5 h-5 bg-black' />
-                                                    <li><a href="#">{date.toString().slice(0, 15)}</a></li>
+                                                    <li><a href="/">{date.toString().slice(0, 15)}</a></li>
                                                     <hr className='w-0.5 h-5 bg-black' />
-                                                    <li><a href="#">{data.comments.length} Comments</a></li>
+                                                    <li><a href="/">{data.comments.length} Comments</a></li>
                                                 </ul>
                                                 <p className='mb-4'>
                                                     {/* {getWordStr(data.content)} */}
@@ -195,12 +195,12 @@ const BlogDetail = () => {
                                             <hr />
                                             <div className="mt-2">
                                                 <ul className='font-bold'>
-                                                    <li><a href="#">- Nature Lifestyle</a></li>
-                                                    <li><a href="#">- Awesome Layouts</a></li>
-                                                    <li><a href="#">- Creative Ideas</a></li>
-                                                    <li><a href="#">- Responsive Templates</a></li>
-                                                    <li><a href="#">- HTML5 / CSS3 Templates</a></li>
-                                                    <li><a href="#">- Creative &amp; Unique</a></li>
+                                                    <li><a href="/">- Nature Lifestyle</a></li>
+                                                    <li><a href="/">- Awesome Layouts</a></li>
+                                                    <li><a href="/">- Creative Ideas</a></li>
+                                                    <li><a href="/">- Responsive Templates</a></li>
+                                                    <li><a href="/">- HTML5 / CSS3 Templates</a></li>
+                                                    <li><a href="/">- Creative &amp; Unique</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -213,13 +213,13 @@ const BlogDetail = () => {
                                             <hr />
                                             <div className="mt-2">
                                                 <ul className='flex flex-wrap gap-2 '>
-                                                    <li className='border-2 py-2 px-2 hover:bg-gray-500'><a href="#" className='hover:text-slate-50'>Lifestyle</a></li>
-                                                    <li className='border-2 py-2 px-2 hover:bg-gray-500'><a href="#" className='hover:text-slate-50'>Creative</a></li>
-                                                    <li className='border-2 py-2 px-2 hover:bg-gray-500'><a href="#" className='hover:text-slate-50'>HTML5</a></li>
-                                                    <li className='border-2 py-2 px-2 hover:bg-gray-500'><a href="#" className='hover:text-slate-50'>Inspiration</a></li>
-                                                    <li className='border-2 py-2 px-2 hover:bg-gray-500'><a href="#" className='hover:text-slate-50'>Motivation</a></li>
-                                                    <li className='border-2 py-2 px-2 hover:bg-gray-500'><a href="#" className='hover:text-slate-50'>PSD</a></li>
-                                                    <li className='border-2 py-2 px-2 hover:bg-gray-500'><a href="#" className='hover:text-slate-50'>Responsive</a></li>
+                                                    <li className='border-2 py-2 px-2 hover:bg-gray-500'><a href="/" className='hover:text-slate-50'>Lifestyle</a></li>
+                                                    <li className='border-2 py-2 px-2 hover:bg-gray-500'><a href="/" className='hover:text-slate-50'>Creative</a></li>
+                                                    <li className='border-2 py-2 px-2 hover:bg-gray-500'><a href="/" className='hover:text-slate-50'>HTML5</a></li>
+                                                    <li className='border-2 py-2 px-2 hover:bg-gray-500'><a href="/" className='hover:text-slate-50'>Inspiration</a></li>
+                                                    <li className='border-2 py-2 px-2 hover:bg-gray-500'><a href="/" className='hover:text-slate-50'>Motivation</a></li>
+                                                    <li className='border-2 py-2 px-2 hover:bg-gray-500'><a href="/" className='hover:text-slate-50'>PSD</a></li>
+                                                    <li className='border-2 py-2 px-2 hover:bg-gray-500'><a href="/" className='hover:text-slate-50'>Responsive</a></li>
                                                 </ul>
                                             </div>
                                         </div>

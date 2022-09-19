@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 
 
 const MainProductEdit = () => {
-    const { data, status } = useSelector(state => state.product)
+    const { data } = useSelector(state => state.product)
     const Value = useContext(ContextWrap);
     const [id, setId] = useState();
     const editProduct = () => {

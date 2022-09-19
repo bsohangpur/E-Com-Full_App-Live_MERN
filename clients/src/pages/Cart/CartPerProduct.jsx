@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { removeFromCart, setTotalAmount } from '../../container/Redux/Reducers/cartSlice';
 
 const CartPerProduct = (props) => {
@@ -25,7 +25,7 @@ const CartPerProduct = (props) => {
         <tbody>
             <tr key={_id} className=''>
                 <td className='md:p-4 lg:p-8 p-2'>
-                    <img className="w-32" src={`http://localhost:3000/${image[0]}`} alt={`${imageAlt[0]} Image`} />
+                    <img className="w-32" src={`http://localhost:3000/${image[0]}`} alt={imageAlt[0]} />
                 </td>
                 <td className='md:p-4 lg:p-8 p-2'>
                     <h2 className="h5 text-black">{title}</h2>

@@ -5,7 +5,7 @@ import PageNotFound from '../../constant/PageNotFound/PageNotFound';
 import CartPerProduct from './CartPerProduct';
 import { ContextWrap } from '../../container/contexApi/States';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const Cart = () => {
     const PData = useContext(ContextWrap);

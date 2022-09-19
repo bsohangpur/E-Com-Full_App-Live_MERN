@@ -75,7 +75,7 @@ const About = () => {
 
             <div className="w-1/2 flex justify-center">
               <div className="img-wrap">
-                <img src="https://picsum.photos/400/500" alt="Image" className="img-fluid" />
+                <img src="https://picsum.photos/400/500" alt="5000" className="img-fluid" />
               </div>
             </div>
 
@@ -98,48 +98,48 @@ const About = () => {
 
             {/* Start Column 1 */}
             <div className="w-1/4">
-              <img src={Person} className="mb-2 rounded-full w-2/3" />
-              <h3 className='font-bold'><a href="#"><span className="">Lawson</span> Arnold</a></h3>
+              <img src={Person} alt='5000' className="mb-2 rounded-full w-2/3" />
+              <h3 className='font-bold'><a href="/"><span className="">Lawson</span> Arnold</a></h3>
               <span className="d-block position mb-4">CEO, Founder, Atty.</span>
               <p className='w-2/3'>Separated they live in.
                 Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-              <p className="mb-0"><a href="#" className="more dark">Learn More <span className="icon-arrow_forward"></span></a></p>
+              <p className="mb-0"><a href="/" className="more dark">Learn More <span className="icon-arrow_forward"></span></a></p>
             </div>
             {/* End Column 1 */}
 
             {/* Start Column 2 */}
             <div className="w-1/4">
-              <img src={Person} className="mb-2 rounded-full w-2/3" />
+              <img src={Person} alt='5000' className="mb-2 rounded-full w-2/3" />
 
-              <h3 className='font-bold'><a href="#"><span className="">Jeremy</span> Walker</a></h3>
+              <h3 className='font-bold'><a href="/"><span className="">Jeremy</span> Walker</a></h3>
               <span className="d-block position mb-4">CEO, Founder, Atty.</span>
               <p className='w-2/3'>Separated they live in.
                 Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-              <p className="mb-0"><a href="#" className="more dark">Learn More <span className="icon-arrow_forward"></span></a></p>
+              <p className="mb-0"><a href="/" className="more dark">Learn More <span className="icon-arrow_forward"></span></a></p>
 
             </div>
             {/* End Column 2 */}
 
             {/* Start Column 3 */}
             <div className="w-1/4">
-              <img src={Person} className="mb-2 rounded-full w-2/3" />
-              <h3 className='font-bold'><a href="#"><span className="">Patrik</span> White</a></h3>
+              <img src={Person} alt='5000' className="mb-2 rounded-full w-2/3" />
+              <h3 className='font-bold'><a href="/"><span className="">Patrik</span> White</a></h3>
               <span className="d-block position mb-4">CEO, Founder, Atty.</span>
               <p className='w-2/3'>Separated they live in.
                 Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-              <p className="mb-0"><a href="#" className="more dark">Learn More <span className="icon-arrow_forward"></span></a></p>
+              <p className="mb-0"><a href="/" className="more dark">Learn More <span className="icon-arrow_forward"></span></a></p>
             </div>
             {/* End Column 3 */}
 
             {/* Start Column 4 */}
             <div className="w-1/4">
-              <img src={Person} className="mb-2 rounded-full w-2/3" />
+              <img src={Person} alt='5000' className="mb-2 rounded-full w-2/3" />
 
-              <h3 className='font-bold'><a href="#"><span className="">Kathryn</span> Ryan</a></h3>
+              <h3 className='font-bold'><a href="/"><span className="">Kathryn</span> Ryan</a></h3>
               <span className="d-block position mb-4">CEO, Founder, Atty.</span>
               <p className='w-2/3'>Separated they live in.
                 Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-              <p className="mb-0"><a href="#" className="more dark">Learn More <span className="icon-arrow_forward"></span></a></p>
+              <p className="mb-0"><a href="/" className="more dark">Learn More <span className="icon-arrow_forward"></span></a></p>
 
 
             </div>

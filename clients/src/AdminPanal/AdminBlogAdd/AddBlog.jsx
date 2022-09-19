@@ -1,11 +1,10 @@
 import React, { useState, useContext } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { ContextWrap } from '../../container/contexApi/States';
 import { blogButton, BlogUpdate } from '../../container/Redux/Reducers/blogSlice';
 
 const AddBlog = () => {
     const dispatch = useDispatch();
-    const blog = useSelector(state=>state.blog);
     const BlogAdd = useContext(ContextWrap);
     
     const [title, SetTitle] = useState("");

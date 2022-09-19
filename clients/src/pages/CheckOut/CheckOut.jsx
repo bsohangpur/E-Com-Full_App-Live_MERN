@@ -3,6 +3,7 @@ import { ContextWrap } from '../../container/contexApi/States';
 import NavBar from '../../constant/Navbar/NavBar';
 import Footer from '../../constant/Footer/Footer';
 import PageNotFound from '../../constant/PageNotFound/PageNotFound';
+import { NavLink } from 'react-router-dom';
 
 const CheckOut = () => {
     const PData = useContext(ContextWrap)
@@ -132,7 +133,7 @@ const CheckOut = () => {
                                         </ul>
                                         <div className="flex justify-center mt-12">
                                             <div className='w-4/5 bg-amber-500 h-12 rounded-sm grid place-content-center'>
-                                                <a to="/checkout" className="text-gray-50">Checkout</a>
+                                                <NavLink to="/checkout" className="text-gray-50">Checkout</NavLink>
                                             </div>
                                         </div>
                                     </div>

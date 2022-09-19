@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FetchBlog } from '../../container/Redux/Reducers/blogSlice';
 import { FetchProduct } from '../../container/Redux/Reducers/productSlice';
 import { Doughnut, Bar } from 'react-chartjs-2';
-import Chart from 'chart.js/auto';
+import 'chart.js/auto';
 
 
 const Dashboard = () => {
@@ -18,7 +18,7 @@ const Dashboard = () => {
     useEffect(() => {
         dispatch(FetchProduct())
         dispatch(FetchBlog())
-    }, [])
+    }, [dispatch])
 
     const outOfStock = pdata.data.filter((ele) => { return ele.stock > 0 }).length
     // const createdOn = pdata.data[pdata.data.length-1].createdOn; 

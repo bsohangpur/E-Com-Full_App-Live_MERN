@@ -7,12 +7,12 @@ import { FetchProduct } from '../Redux/Reducers/productSlice';
 
 
 const Product = (props) => {
-  const { data, status } = useSelector(state => state.product);
+  const { data } = useSelector(state => state.product);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(FetchProduct())
-  }, [])
+  }, [dispatch])
 
   return (
     data.slice(0, props.page === 'home' ? 3 : data.length).map((value) => {

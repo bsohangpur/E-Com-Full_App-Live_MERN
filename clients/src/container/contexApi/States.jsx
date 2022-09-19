@@ -1,12 +1,11 @@
-import { createContext, useState, useEffect } from "react";
-import axios from "axios";
+import { createContext, useState } from "react";
 
 const ContextWrap = createContext();
 
 const State = (props) => {
     /* ********************-------------------******************** */
     //btn state for all button.
-    const [btn, SetBtn] = useState(false);
+    // const [btn, SetBtn] = useState(false);
     const [button, SetButton] = useState({
         EditProduct: false,
         DeleteProduct: false,
@@ -17,20 +16,20 @@ const State = (props) => {
 
     /* ********************-------------------******************** */
     //admin panel login auth.
-    const [adminAuth, setadminAuth] = useState(false);
+    // const [adminAuth, setadminAuth] = useState(false);
     const [adminActive, setAdminActive] = useState('Dashboard');
 
     /* ********************-------------------******************** */
     //set id while edit and delete product on Admin page
-    const [id, setId] = useState();
+    // const [id, setId] = useState();
 
     /* ********************-------------------******************** */
     //search data usestate.
-    const [searchData, setSearchData] = useState([]);
+    // const [searchData, setSearchData] = useState([]);
 
     /* ********************-------------------******************** */
     //product id when click on know more btn on product page.
-    const [clickData, setClickData] = useState()
+    // const [clickData, setClickData] = useState()
 
 
     /* ********************-------------------******************** */
@@ -107,9 +106,10 @@ const State = (props) => {
     /* ********************-------------------******************** */
     //***********-----------**********/
 // SearchData
+// searchData,
     return (
         <ContextWrap.Provider value={{
-            Mode, button, searchData,
+            Mode, button, 
             adminActive, setAdminActive
         }}>
             {props.children}

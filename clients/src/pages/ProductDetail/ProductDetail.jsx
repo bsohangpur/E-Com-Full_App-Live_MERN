@@ -1,9 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import NavBar from '../../constant/Navbar/NavBar';
 import Footer from '../../constant/Footer/Footer';
-import PageNotFound from '../../constant/PageNotFound/PageNotFound';
-import { ContextWrap } from '../../container/contexApi/States';
 
 
 // Import Swiper React components
@@ -90,7 +88,7 @@ const ProductDetail = () => {
                                                     image.map((image, index) => {
                                                         return (
                                                             <SwiperSlide key={index}>
-                                                                <img className='rounded-lg' src={`http://localhost:3000/${image}`} />
+                                                                <img className='rounded-lg' alt='5000' src={`http://localhost:3000/${image}`} />
                                                             </SwiperSlide>
                                                         )
                                                     })
@@ -119,7 +117,7 @@ const ProductDetail = () => {
                                                 <i className="fa fa-star text-amber-200 text-sm" aria-hidden="true"></i>
                                             </div>
                                             <div className="review">
-                                                <a href="#">Write A Review</a>
+                                                <a href="/">Write A Review</a>
                                             </div>
                                         </div>
                                         {/* Avaiable */}

@@ -11,14 +11,14 @@ const HeroSection = (props) => {
                             <h1 className='grid text-red-300 md:text-xl  lg:text-4xl gap-1'>{props.props.heading}<span className="lg:text-3xl md:text-lg">{props.props.headingTwo}</span></h1>
                             <p className="mb-4">{props.props.textArea}</p>
                             <p>
-                                <a href="" className="btn btn-secondary mx-2">Shop Now</a>
-                                <a href="#" className="btn btn-white-outline">Explore</a>
+                                <a href="/" className="btn btn-secondary mx-2">Shop Now</a>
+                                <a href="/" className="btn btn-white-outline">Explore</a>
                             </p>
                         </div>
                     </div>
                     <div className="md:w-1/2">
                         <div className="">
-                            <img src={props.props.img} className="" />
+                            <img src={props.props.img} alt='5000' className="" />
                         </div>
                     </div>
                 </div>

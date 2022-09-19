@@ -12,10 +12,10 @@ const ProductEdit = (props) => {
     const [productDetail, SetProductDetail] = useState(props.pdata[0].productDetail);
     const [productPriceCost, SetProductPriceCost] = useState(props.pdata[0].productPriceCost);
     const [productPriceSell, SetProductPriceSell] = useState(props.pdata[0].productPriceSell);
-    const [productCategory, SetProductCategory] = useState(props.pdata[0].productCategory);
-    const [productSubCategory, SetProductSubCategory] = useState(props.pdata[0].productSubCategory);
+    // const [productCategory, SetProductCategory] = useState(props.pdata[0].productCategory);
+    // const [productSubCategory, SetProductSubCategory] = useState(props.pdata[0].productSubCategory);
     const [productImage, SetProductImage] = useState("");
-    const [category, setCategory] = useState([]);
+    // const [category, setCategory] = useState([]);
 
     // submit edited data
     
@@ -26,11 +26,11 @@ const ProductEdit = (props) => {
         formData.append('productDetail', productDetail);
         formData.append('productPriceCost', productPriceCost);
         formData.append('productPriceSell', productPriceSell);
-        formData.append('productCategory', productCategory);
-        formData.append('productSubCategory', productSubCategory);
+        // formData.append('productCategory', productCategory);
+        // formData.append('productSubCategory', productSubCategory);
         formData.append('productImage', productImage);
-        const responseImg = await axios.post(`${url}/${props.pdata[0]._id}`, formData);
-        const response = await axios.put(`${url}/${props.pdata[0]._id}`, formData);
+        await axios.post(`${url}/${props.pdata[0]._id}`, formData);
+        await axios.put(`${url}/${props.pdata[0]._id}`, formData);
         
         value.fetchApi();
         value.Mode('editproduct');
@@ -111,7 +111,7 @@ const ProductEdit = (props) => {
 
                         <div className="grid gap-2 mx-4">
                             <label htmlFor="">Product Image</label>
-                            <img className='w-32' src={`http://localhost:3000/${props.pdata[0].productImage}`} alt="product image" />
+                            <img className='w-32' src={`http://localhost:3000/${props.pdata[0].productImage}`} alt="5000" />
                             <div className="relative my-4">
                                 <input onChange={(e) => SetProductImage(e.target.files[0])} type="file" accept="image/png, image/jpeg" className="outline-none border-none rounded-sm py-2" id="" />
                                 <div className="absolute right-0">{productImage.size <= 500000 ? "" : "Image must be under 500kb"}</div>

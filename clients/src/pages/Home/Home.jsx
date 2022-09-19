@@ -102,7 +102,7 @@ const Home = () => {
 
                         <div className="col-lg-5">
                             <div className="img-wrap">
-                                <img src="/src/assets/why-choose-us-img.jpg" alt="Image" className="img-fluid" />
+                                <img src="/src/assets/why-choose-us-img.jpg" alt="5000" className="img-fluid" />
                             </div>
                         </div>
 
@@ -131,7 +131,7 @@ const Home = () => {
                                 <li>Donec vitae odio quis nisl dapibus malesuada</li>
                                 <li>Donec vitae odio quis nisl dapibus malesuada</li>
                             </ul>
-                            <p><a herf="#" className="btn">Explore</a></p>
+                            <p><a href="/" className="btn">Explore</a></p>
                         </div>
                     </div>
                 </div>
@@ -145,12 +145,12 @@ const Home = () => {
                         <div className="">
                             <div className="product-item-sm flex">
                                 <div className="thumbnail">
-                                    <img src="/src/assets/product-1.png" alt="Image" className="img-fluid" />
+                                    <img src="/src/assets/product-1.png" alt="5000" className="img-fluid" />
                                 </div>
                                 <div className="pt-3">
                                     <h3>Nordic Chair</h3>
                                     <p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio </p>
-                                    <p><a href="#">Read More</a></p>
+                                    <p><a href="/">Read More</a></p>
                                 </div>
                             </div>
                         </div>
@@ -158,12 +158,12 @@ const Home = () => {
                         <div className="">
                             <div className="product-item-sm flex">
                                 <div className="thumbnail">
-                                    <img src="/src/assets/product-2.png" alt="Image" className="img-fluid" />
+                                    <img src="/src/assets/product-2.png" alt="5000" className="img-fluid" />
                                 </div>
                                 <div className="pt-3">
                                     <h3>Kruzo Aero Chair</h3>
                                     <p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio </p>
-                                    <p><a href="#">Read More</a></p>
+                                    <p><a href="/">Read More</a></p>
                                 </div>
                             </div>
                         </div>
@@ -171,12 +171,12 @@ const Home = () => {
                         <div className="">
                             <div className="product-item-sm flex">
                                 <div className="thumbnail">
-                                    <img src="/src/assets/product-3.png" alt="Image" className="img-fluid" />
+                                    <img src="/src/assets/product-3.png" alt="5000" className="img-fluid" />
                                 </div>
                                 <div className="pt-3">
                                     <h3>Ergonomic Chair</h3>
                                     <p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio </p>
-                                    <p><a href="#">Read More</a></p>
+                                    <p><a href="/">Read More</a></p>
                                 </div>
                             </div>
                         </div>
@@ -196,35 +196,35 @@ const Home = () => {
                             <h2 className="section-title">Recent Blog</h2>
                         </div>
                         <div className="">
-                            <a href="#" className="more">View All Posts</a>
+                            <a href="/" className="more">View All Posts</a>
                         </div>
                     </div>
 
                     <div className="md:flex gap-4">
                         <div className="post-entry">
-                            <a href="#" className="post-thumbnail"><img src="/src/assets/post-1.jpg" alt="Image" className="img-fluid" /></a>
+                            <a href="/" className="post-thumbnail"><img src="/src/assets/post-1.jpg" alt="5000" className="img-fluid" /></a>
                             <div className="post-content-entry">
-                                <h3><a href="#">First Time Home Owner Ideas</a></h3>
+                                <h3><a href="/">First Time Home Owner Ideas</a></h3>
                                 <div className="meta">
-                                    <span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 19, 2021</a></span>
+                                    <span>by <a href="/">Kristin Watson</a></span> <span>on <a href="/">Dec 19, 2021</a></span>
                                 </div>
                             </div>
                         </div>
                         <div className="post-entry">
-                            <a href="#" className="post-thumbnail"><img src="/src/assets/post-2.jpg" alt="Image" className="img-fluid" /></a>
+                            <a href="/" className="post-thumbnail"><img src="/src/assets/post-2.jpg" alt="5000" className="img-fluid" /></a>
                             <div className="post-content-entry">
-                                <h3><a href="#">How To Keep Your Furniture Clean</a></h3>
+                                <h3><a href="/">How To Keep Your Furniture Clean</a></h3>
                                 <div className="meta">
-                                    <span>by <a href="#">Robert Fox</a></span> <span>on <a href="#">Dec 15, 2021</a></span>
+                                    <span>by <a href="/">Robert Fox</a></span> <span>on <a href="/">Dec 15, 2021</a></span>
                                 </div>
                             </div>
                         </div>
                         <div className="post-entry">
-                            <a href="#" className="post-thumbnail"><img src="/src/assets/post-3.jpg" alt="Image" className="img-fluid" /></a>
+                            <a href="/" className="post-thumbnail"><img src="/src/assets/post-3.jpg" alt="5000" className="img-fluid" /></a>
                             <div className="post-content-entry">
-                                <h3><a href="#">Small Space Furniture Apartment Ideas</a></h3>
+                                <h3><a href="/">Small Space Furniture Apartment Ideas</a></h3>
                                 <div className="meta">
-                                    <span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 12, 2021</a></span>
+                                    <span>by <a href="/">Kristin Watson</a></span> <span>on <a href="/">Dec 12, 2021</a></span>
                                 </div>
                             </div>
                         </div>

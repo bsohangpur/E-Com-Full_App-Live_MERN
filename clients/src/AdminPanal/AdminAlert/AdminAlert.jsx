@@ -1,13 +1,10 @@
-import React, { useContext } from "react";
-import { ContextWrap } from "../../container/contexApi/States";
-import {useDispatch, useSelector} from 'react-redux';
+import React from "react";
+import {useDispatch} from 'react-redux';
 import { blogButton, BlogUpdate } from "../../container/Redux/Reducers/blogSlice";
 
 
 const AdminAlert = (props) => {
     const dispatch = useDispatch();
-    const Blog = useSelector(state=>state.blog);
-    const Data = useContext(ContextWrap);
 
     const comeBack = () => {
         dispatch(blogButton({Edit:false}));

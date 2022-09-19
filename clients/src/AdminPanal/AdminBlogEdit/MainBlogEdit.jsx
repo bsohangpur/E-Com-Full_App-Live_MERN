@@ -1,8 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { MdEdit, MdDeleteOutline } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
-import { ContextWrap } from '../../container/contexApi/States';
 import { blogButton, FetchBlog } from '../../container/Redux/Reducers/blogSlice';
 import AdminAlert from '../AdminAlert/AdminAlert';
 import BlogEdit from './BlogEdit';
@@ -10,13 +9,12 @@ import BlogEdit from './BlogEdit';
 const MainBlogEdit = () => {
     const dispatch = useDispatch();
     const Blog =useSelector(state=>state.blog);
-    const BlogData = useContext(ContextWrap);
     const [EditData, setEditData] = useState()
     const [DeleteId, setDeleteId] = useState()
 
     useEffect(()=>{
         dispatch(FetchBlog())
-    },[])
+    },[dispatch])
 
     const getWordStr = (str) => {
         const arr = str.split('.');
@@ -43,7 +41,7 @@ const MainBlogEdit = () => {
                                 <div key={data._id} className="shadow-lg py-0">
                                     <div className="md:flex mb-5 ">
                                         <div className="mr-3 w-1/4 shadow-md opacity-80 hover:opacity-100 bg-slate-200 rounded-md">
-                                            <img src={`http://localhost:3000/${data.image[0]}`} alt="customer image" className="p-2 w-full h-full" />
+                                            <img src={`http://localhost:3000/${data.image[0]}`} alt="5000" className="p-2 w-full h-full" />
                                         </div>
                                         <div className="w-2/3 ml-4">
                                             <h6 className="mb-3 capitalize font-medium">{data.title}</h6>

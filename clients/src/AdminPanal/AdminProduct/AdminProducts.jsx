@@ -4,11 +4,11 @@ import { FetchProduct } from '../../container/Redux/Reducers/productSlice';
 
 const ProductRemove = () => {
     const dispatch = useDispatch();
-    const { data, status } = useSelector(state => state.product);
+    const { data } = useSelector(state => state.product);
 
     useEffect(() => {
         dispatch(FetchProduct())
-    }, [])
+    }, [dispatch])
 
     return (
         <div className='relative'>
@@ -22,10 +22,10 @@ const ProductRemove = () => {
                         <div className="shadow-lg py-0">
                             <div className="md:flex mb-5">
                                 <div className="mr-3 w-1/4 shadow-md opacity-80 hover:opacity-100 bg-slate-200 rounded-md">
-                                    <a href="#"><img src={`http://localhost:3000/${image[0]}`} alt={imageAlt} className="p-2 w-full h-full" /></a>
+                                    <a href="/"><img src={`http://localhost:3000/${image[0]}`} alt={imageAlt} className="p-2 w-full h-full" /></a>
                                 </div>
                                 <div className="w-2/3 px-4">
-                                    <a href="#"><h6 className="mb-3 capitalize font-medium">{title}</h6></a>
+                                    <a href="/"><h6 className="mb-3 capitalize font-medium">{title}</h6></a>
                                     <p className="my-1 float-md-right grid">
                                         {category.map((data)=>{
                                             return <span className="mr-2 capitalize">{data}</span>

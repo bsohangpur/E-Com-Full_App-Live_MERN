@@ -86,7 +86,7 @@ const BlogEdit = (props) => {
                             </div>
                             <div className="grid gap-2 mx-4">
                                 <label htmlFor="">Blog Image</label>
-                                <img className='w-32' src={`http://localhost:3000/${props.data.image}`} alt="product image" />
+                                <img className='w-32' src={`http://localhost:3000/${props.data.image}`} alt="5000" />
                                 <div className="relative my-4">
                                     <input onChange={(e) => SetImage(e.target.files[0])} type="file" accept="image/png, image/jpeg" className="outline-none border-none rounded-sm py-2" id="" />
                                     <div className="absolute right-0"></div>

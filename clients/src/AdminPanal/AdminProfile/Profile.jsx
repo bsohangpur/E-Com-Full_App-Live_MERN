@@ -11,7 +11,7 @@ const Profile = () => {
                             <h6 class="mb-0">Profile Information</h6>
                         </div>
                         <div class="text-end">
-                            <a href="javascript:;">
+                            <a href="/">
                                 <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
                             </a>
                         </div>
@@ -33,13 +33,13 @@ const Profile = () => {
                         <li class="list-group-item border-0 p-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; USA</li>
                         <li class="list-group-item border-0 p-0 pb-0">
                             <strong class="text-dark text-sm">Social:</strong> &nbsp;
-                            <a class=" mb-0 px-2 py-0" href="javascript:;">
+                            <a class=" mb-0 px-2 py-0" href="/">
                                 <i class="fab fa-facebook fa-lg"></i>
                             </a>
-                            <a class="mb-0 px-2 py-0" href="javascript:;">
+                            <a class="mb-0 px-2 py-0" href="/">
                                 <i class="fab fa-twitter fa-lg"></i>
                             </a>
-                            <a class="mb-0 px-2 py-0" href="javascript:;">
+                            <a class="mb-0 px-2 py-0" href="/">
                                 <i class="fab fa-instagram fa-lg"></i>
                             </a>
                         </li>

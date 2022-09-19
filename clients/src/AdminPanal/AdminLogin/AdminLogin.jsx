@@ -50,7 +50,7 @@ const AdminLogin = () => {
                                     <p className="mb-12 text-lg">Enter your email and password to  Login</p>
                                 </div>
                                 <div className="px-4 py-8 bg-slate-100 shadow-lg rounded-md">
-                                    <form role="form">
+                                    <form>
                                         <label>Email</label>
                                         <div className="my-2">
                                             <input onChange={GetData} name="email" value={loginData.email} type="email" className="w-full h-12 rounded-md pl-2 border-none outline-none" placeholder="Email" required />

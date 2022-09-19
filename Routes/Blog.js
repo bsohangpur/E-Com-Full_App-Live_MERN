@@ -1,5 +1,6 @@
 const express = require('express').Router();
-const BlogData = require('/app/Database/Blog/blogData');
+const path = require("path");
+const BlogData = require(path.join(__dirname, '../DataBase/Blog/blogData.js'));
 const Uploads = require('../app')
 
 

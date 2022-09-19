@@ -1,5 +1,5 @@
 const express = require('express').Router();
-const RegisterData = require('/app/Database/Register/RegisterData');
+const RegisterData = require('../Database/Register/RegisterData');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const dotenv = require("dotenv").config();

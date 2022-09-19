@@ -51,27 +51,6 @@ const SearchProduct = (props) => {
                 )
             })}
         </div>
-        // < div className = "" >
-        //     <div className="text-xl my-4">
-        //         <h2 className="text-bold">Product We Found</h2>
-        //     </div>
-        //     <div className="shadow-lg py-0">
-        //         <div className="md:flex mb-5">
-        //             <div className="mr-3 w-1/4 shadow-md opacity-80 hover:opacity-100 bg-slate-200 rounded-md">
-        //                 <a href="#"><img src={`http://localhost:3000/${props.search.productImage}`} alt="customer image" className="p-2 w-full h-full" /></a>
-        //             </div>
-        //             <div className="w-2/3 px-4">
-        //                 <a href="#"><h6 className="mb-3 capitalize font-medium">{props.search.productName}</h6></a>
-        //                 <p className="my-1 float-md-right"><span className="mr-2 capitalize">category</span></p>
-        //                 <p className="my-4 ">{props.search.productDetail}</p>
-        //                 <p className="mb-0">
-        //                     <del>{`₹${props.search.productPriceSell}`}</del>
-        //                     <span className="ml-3">{`₹${props.search.productPriceSell}`}</span>
-        //                 </p>
-        //             </div>
-        //         </div>
-        //     </div>
-        // </div >
     )
 }
 

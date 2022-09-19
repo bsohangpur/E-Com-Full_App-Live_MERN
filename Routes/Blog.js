@@ -1,5 +1,5 @@
 const express = require('express').Router();
-const BlogData = require('../Database/Blog/blogData');
+const BlogData = require('/app/Database/Blog/blogData');
 const Uploads = require('../app')
 
 

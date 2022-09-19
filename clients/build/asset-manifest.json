@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2ee413e2.css",
+    "main.js": "/static/js/main.0744fff8.js",
+    "static/media/contactimg.png": "/static/media/contactimg.21c38c0ae2d12e5f7e54.png",
+    "static/media/bowl-2.png": "/static/media/bowl-2.64902fbe702f559f033a.png",
+    "static/media/bowl-3.png": "/static/media/bowl-3.0e267884469b24f9ddbe.png",
+    "static/media/Add-cart-Image.png": "/static/media/Add-cart-Image.ba82b9c06b89c155166e.png",
+    "static/media/404 Error Page not Found.png": "/static/media/404 Error Page not Found.76838c843a5399a9ef30.png",
+    "static/media/register.jpg": "/static/media/register.8db4f7d8034b9433430e.jpg",
+    "static/media/product-1.png": "/static/media/product-1.b3c19796dccb13fbd0b3.png",
+    "static/media/person_1.jpg": "/static/media/person_1.3b349ed7d06859f8fc58.jpg",
+    "static/media/person-1.jpg": "/static/media/person-1.bf65fa90e24bf242a489.jpg",
+    "static/media/product_not_found_img.png": "/static/media/product_not_found_img.41f5e9cfa8f3f8592b06.png",
+    "static/media/dots-green.svg": "/static/media/dots-green.fc0a29ccdaf1ec80964e.svg",
+    "static/media/dots-yellow.svg": "/static/media/dots-yellow.bfc44818a1b6606dd7c1.svg",
+    "static/media/dots-light.svg": "/static/media/dots-light.e00bbd6fd2e7780c28c9.svg",
+    "index.html": "/index.html",
+    "main.2ee413e2.css.map": "/static/css/main.2ee413e2.css.map",
+    "main.0744fff8.js.map": "/static/js/main.0744fff8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2ee413e2.css",
+    "static/js/main.0744fff8.js"
+  ]
+}

@@ -56,17 +56,12 @@ app.use('/login', Login);
 
 
 
+app.get('/', (req, res) => {
+    app.use(express.static(path.resolve(__dirname, 'clients', 'build')))
+    res.sendFile(path.resolve(__dirname, 'clients', 'build', 'index.html'))
+})
 
-if (process.env.NODE_ENV === 'production') {
-    const path = require('path')
-
-    app.get('/', (req, res) => {
-        app.use.express.static(path.resolve(__dirname, 'clients', 'build'))
-        res.sendFile(path.resolve(__dirname, 'clients', 'build', 'index.html'))
-    })
-}
-
-
+console.log(path.resolve(__dirname, 'clients', 'build', 'index.html'))
 
 
 app.listen(port, console.log("live"))

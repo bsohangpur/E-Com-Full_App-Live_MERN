@@ -1,7 +1,7 @@
 const express = require('express').Router();
-const RegisterData = require('../Database/Register/RegisterData')
+const path = require("path");
+const RegisterData = require(path.join(__dirname, '../DataBase/Register/RegisterData'))
 const bcrypt = require('bcrypt');
-
 
 
 //adding user data at registration.

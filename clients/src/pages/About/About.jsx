@@ -22,11 +22,11 @@ const About = () => {
       <Navbar />
       <HeroSection props={about}/>
       {/* Start Why Choose Us Section */}
-      <div className="why-choose-section">
+      <div className="my-12">
         <div className="container">
           <div className="flex justify-between align-center flex-wrap">
             <div className="w-1/2 grid place-content-center px-12">
-              <h2 className="section-title">Why Choose Us</h2>
+              <h2 className="lg:text-3xl md:text-2xl font-semibold font-serif">Why Choose Us</h2>
               <p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
 
               <div className="grid grid-cols-2 my-5">
@@ -85,12 +85,12 @@ const About = () => {
       {/* End Why Choose Us Section */}
 
       {/* Start Team Section */}
-      <div className="untree_co-section">
+      <div className="">
         <div className="container">
 
-          <div className="row mb-5">
+          <div className="mb-5">
             <div className=" mx-auto text-center">
-              <h2 className="section-title">Our Team</h2>
+              <h2 className="lg:text-3xl md:text-2xl font-semibold font-serif">Our Team</h2>
             </div>
           </div>
 

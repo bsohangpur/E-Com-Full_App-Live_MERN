@@ -4,6 +4,8 @@ import cartSlice from "./Reducers/cartSlice";
 import loginSlice from "./Reducers/loginSlice";
 import productSlice from "./Reducers/productSlice";
 import registerSlice from "./Reducers/registerSlice";
+import userSlice from "./Reducers/userSlice";
+
 
 const store = configureStore({
     reducer: {
@@ -11,7 +13,8 @@ const store = configureStore({
         product: productSlice,
         register: registerSlice,
         login: loginSlice,
-        cart: cartSlice
+        cart: cartSlice,
+        user: userSlice
     }
 });
 

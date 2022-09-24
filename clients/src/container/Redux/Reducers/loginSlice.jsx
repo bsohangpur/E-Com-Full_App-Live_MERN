@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const url = 'https://e-com-vercel.vercel.app/login/data'
+const url = 'http://localhost:3000/login/data'
 
 export const STATUS = Object.freeze({
     Failed:'failed',
@@ -31,7 +31,7 @@ const loginSlice = createSlice({
 
 export function SendData(data){
     return async function sendData(dispatch){
-        const res = await axios.post(url, data);
+        const res = await axios.post(url, data, { withCredentials: true });
         dispatch(setStatus(res.data))
     }
 

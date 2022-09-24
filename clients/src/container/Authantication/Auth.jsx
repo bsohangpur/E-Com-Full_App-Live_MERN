@@ -1,12 +1,39 @@
 import React from 'react';
-import { Outlet, Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux'
+import { Outlet, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import axios from 'axios';
+
 
 const Auth = () => {
-    const status = useSelector(state => state.login);
-    const auth= status.auth;
+    const navigate = useNavigate();
+    const UserAuth = async () => {
+        try {
+            const url = 'http://localhost:3000/user/data';
+            const res = await axios.get(url, {
+                header: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                }, withCredentials: true
+            });
+            if (res.status !== 200) {
+                console.log("page not found")
+            }
+
+        } catch (e) {
+            console.log(e)
+            navigate('/login')
+        }
+    }
+
+    useEffect(() => {
+        UserAuth()
+    }, []);
+
     return (
-        auth ? <Outlet /> : <Navigate to='/login' />
+        <div className="">
+            <Outlet />
+        </div>
+
     )
 }
 

@@ -28,3 +28,7 @@ input[type=number] {
   }
 }
 
+.active{
+  color: #c0c4c4;
+  text-decoration: underline;
+}

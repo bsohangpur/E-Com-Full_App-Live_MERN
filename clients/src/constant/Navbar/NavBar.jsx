@@ -17,10 +17,10 @@ const NavBar = () => {
     return (
         <div>
             {/* Start Header/Navigation */}
-            <nav className="bg-purple-900 text-slate-50" arial-label="navigation bar">
+            <nav className="bg-cyan-800 text-slate-50" arial-label="navigation bar">
 
                 <div className="relative md:static py-4 md:py-8 md:mx-16 flex flex-wrap justify-between items-center">
-                    <NavLink className="xl:text-3xl text-gray-300 hover:text-gray-100 hover:underline lg:text-2xl md:text-xl px-4" to='/'>Lulucollection<span>.</span></NavLink>
+                    <h1 className="xl:text-3xl text-gray-300 hover:text-gray-100 hover:underline lg:text-2xl md:text-xl px-4">Lulucollection<span>.</span></h1>
                     <button className='md:hidden w-8 h-8 overflow-hidden transition-opacity relative mx-4 z-50 text-2xl' onClick={menuBtn} >
                         <AiOutlineMenu style={menu===true?{opacity:0}:{opacity:1}}  className='absolute top-1 left-1'/>
                         <AiOutlineClose style={menu===true?{opacity:1}:{opacity:0}} className='absolute top-1 left-1'/>

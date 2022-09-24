@@ -33,7 +33,14 @@ const staticpath = path.join(__dirname, "../public");
 // middleware
 app.use(express.json());
 app.use(express.static(staticpath));
-app.use(cors());
+const corsConfig = {
+    credentials: true,
+    origin: true,
+};
+app.use(cors(corsConfig));
+
+const cookieParser = require('cookie-parser')
+app.use(cookieParser())
 app.use('/uploads', express.static('./uploads'));
 
 
@@ -54,14 +61,17 @@ app.use('/register', Register);
 const Login = require('./Routes/Login');
 app.use('/login', Login);
 
+//Login Routes
+const User = require('./Routes/User');
+app.use('/user', User);
 
 
-app.get('/', (req, res) => {
-    app.use(express.static(path.resolve(__dirname, 'clients', 'build')))
-    res.sendFile(path.resolve(__dirname, 'clients', 'build', 'index.html'))
-})
 
-console.log(path.resolve(__dirname, 'clients', 'build', 'index.html'))
+// app.get('/', (req, res) => {
+//     app.use(express.static(path.resolve(__dirname, 'clients', 'build')))
+//     res.sendFile(path.resolve(__dirname, 'clients', 'build', 'index.html'))
+// })
+
 
 
 app.listen(port, console.log("live"))

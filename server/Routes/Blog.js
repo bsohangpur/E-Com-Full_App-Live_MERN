@@ -36,7 +36,7 @@ express.post('/data', Uploads.array('image'), async (req, res) => {
 //     const id = req.params.id;
 
 //     try {
-        
+
 //     }
 //     catch (e) {
 //         res.send(e)
@@ -62,11 +62,22 @@ express.get('/data', async (req, res) => {
 // getting blog by id and update the info
 express.put('/data/:id', Uploads.array('image'), async (req, res) => {
     const id = req.params.id;
-    const blogimg = req.files.map((file) => { return file.path });
-    const blogimgalt = req.files.map((file) => { return file.originalname });
-
     try {
-        if (req.files.length !== 0) {
+        if (req.body.title || req.body.creater || req.body.content || req.body.categories || req.body.tags) {
+
+            await BlogData.findByIdAndUpdate(id, {
+                title: req.body.title,
+                creater: req.body.creater,
+                content: req.body.content,
+                categories: req.body.categories,
+                tags: req.body.tags
+            })
+            res.send({ status: "success", message: "Data updated successfully" })
+            console.log("1")
+        }
+        else if (req.files && req.body.title || req.body.creater || req.body.content || req.body.categories || req.body.tags) {
+            const blogimg = req.files.map((file) => { return file.path });
+            const blogimgalt = req.files.map((file) => { return file.originalname });
             const Data = await BlogData.findByIdAndUpdate(id, {
                 title: req.body.title,
                 creater: req.body.creater,
@@ -76,33 +87,25 @@ express.put('/data/:id', Uploads.array('image'), async (req, res) => {
                 image: blogimg,
                 imageAlt: blogimgalt
             })
-            res.send(Data)
+            res.send({ status: "success", message: "Data updated with Image successfully" })
+            console.log("2")
         }
-        else if(req.body.comments !== undefined) {
+        if (req.body.comments) {
             const Data = await BlogData.findByIdAndUpdate(id,
                 {
-                 $push: {
-                     comments:req.body.comments
-                 }
+                    $push: {
+                        comments: req.body.comments
+                    }
                 }
-             )
-             const data = Data.push(Data)
-             res.send(data)
-        }
-        else {
-            const Data = await BlogData.findByIdAndUpdate(id, {
-                title: req.body.title,
-                creater: req.body.creater,
-                content: req.body.content,
-                categories: req.body.categories,
-                tags: req.body.tags
-            })
-            res.send(Data)
+            )
+            res.send({ status: "success", message: "comment Added successfully" })
+            console.log("3")
         }
     }
 
     catch (e) {
         res.send(e)
+        console.log(e)
     }
 })
 

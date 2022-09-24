@@ -12,6 +12,8 @@ const BlogSchema = new mongodb.Schema({
     },
     comments: [{
         name: { type: String },
+        email: { type: String },
+        subject: { type: String },
         description: { type: String },
         time: { type: Date, default: Date.now }
         

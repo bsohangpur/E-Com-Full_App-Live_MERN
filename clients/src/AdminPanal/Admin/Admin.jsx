@@ -3,17 +3,17 @@ import { AiOutlineUser, AiOutlineSearch, AiOutlineMenu, AiOutlineClose } from 'r
 import { FaUserAlt } from 'react-icons/fa';
 import { ContextWrap } from '../../container/contexApi/States';
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setAuth } from '../../container/Redux/Reducers/loginSlice';
 import { PageD } from '../PageData/PageD';
 import '../Admin.css'
+import Cookies from 'js-cookie'
 
 const Admin = () => {
-    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [menu, setMenu] = useState(false)
     const DataSearch = useContext(ContextWrap);
     const [searchInput, setSearchInput] = useState();
+
+
 
     const searchType = () => {
         DataSearch.setAdminActive('Search Product')
@@ -21,7 +21,7 @@ const Admin = () => {
     }
 
     const logOut = () => {
-        dispatch(setAuth(''));
+        Cookies.remove('jwt')
         navigate('/login');
     }
 
@@ -37,9 +37,9 @@ const Admin = () => {
                         {
                             menu
                                 ?
-                                <AiOutlineMenu className='w-full h-full' onClick={()=>setMenu(!menu)}/>
+                                <AiOutlineMenu className='w-full h-full' onClick={() => setMenu(!menu)} />
                                 :
-                                <AiOutlineClose className='w-full h-full' onClick={()=>setMenu(!menu)}/>
+                                <AiOutlineClose className='w-full h-full' onClick={() => setMenu(!menu)} />
                         }
                     </div>
                 </div>
@@ -75,7 +75,7 @@ const Admin = () => {
                     </ul>
                 </div>
             </aside>
-            <main style={{width : menu ? "95%":'80%'}} className="rounded-lg absolute right-0 admin-main">
+            <main style={{ width: menu ? "95%" : '80%' }} className="rounded-lg absolute right-0 admin-main">
                 {/* Navbar */}
                 <nav className="px-0 mx-4 shadow-none rounded-xl" id="navbarBlur"
                     navbar-scroll="true">
@@ -83,8 +83,8 @@ const Admin = () => {
                         <div className="collapse w-full flex justify-end navbar-collapse mt-2" id="navbar">
                             <div className="flex items-center ">
                                 <div className="w-fit h-12 shadow-md rounded-md flex items-center  justify-center px-4 gap-2">
-                                    <input type="text" onChange={(e) => { setSearchInput(e.target.value) }} className="border-none outline-none bg-slate-100" placeholder="Type here..." />
-                                    <span onClick={searchType} className=" cursor-pointer"><AiOutlineSearch /></span>
+                                    <input type="text" onChange={(e) => { setSearchInput(e.target.value) }} className="border-none outline-none" placeholder="Type here..." />
+                                    <button onClick={searchType} className="border-none outline-none cursor-pointer"><AiOutlineSearch /></button>
                                 </div>
                             </div>
                             <ul className="navbar-nav  justify-content-end">

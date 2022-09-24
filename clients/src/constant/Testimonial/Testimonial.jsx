@@ -19,7 +19,7 @@ const Testimonial = () => {
                 <div className="container">
                     <div className="my-12">
                         <div className="col-lg-7 mx-auto text-center">
-                            <h2 className="section-title">Testimonials</h2>
+                            <h2 className="lg:text-3xl md:text-2xl font-semibold font-serif">Testimonials</h2>
                         </div>
                     </div>
                     <Swiper

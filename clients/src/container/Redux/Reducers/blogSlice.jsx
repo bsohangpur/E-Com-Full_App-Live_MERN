@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axois from 'axios';
 
-const url = 'https://e-com-vercel.vercel.app/blog/data';
+const url = 'http://localhost:3000/blog/data';
 
 const Status = Object.freeze({
   Idle: "idle",
@@ -21,9 +21,9 @@ export const blogSlice = createSlice({
     data: [],
     status: 'server starting...',
     button: {
-      Add : false,
+      Add: false,
       Edit: false,
-      Delete : false
+      Delete: false
     }
   },
   reducers: {
@@ -33,8 +33,8 @@ export const blogSlice = createSlice({
     getBlog: (state, action) => {
       state.data = action.payload;
     },
-    blogButton:(state, action)=>{
-      state.button=action.payload;
+    blogButton: (state, action) => {
+      state.button = action.payload;
     }
   },
 });
@@ -93,7 +93,17 @@ export function BlogUpdate(data, action, id) {
   }
 }
 
+export function CommentUpdate(data, action, id) {
+  return async function commentUpdate(dispatch) {
+    try {
+      await axois.put(`${url}/${id}`, data);
+    }
+    catch (e) {
+        console.log(e);
+      }
+    }
+}
 
-export const { blogStatus, getBlog, blogButton } = blogSlice.actions;
+  export const { blogStatus, getBlog, blogButton } = blogSlice.actions;
 
-export default blogSlice.reducer
+  export default blogSlice.reducer

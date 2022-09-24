@@ -6,13 +6,9 @@ export const cartSlice = createSlice({
     name:'cart',
     initialState:{
         data:[],
-        product:'',
         totalAmount:''
     },
     reducers:{
-        sendProduct:(state, action)=>{
-            state.product=action.payload
-        },
         addToCart:(state, action)=>{
             state.data = [...state.data, action.payload]
         },
@@ -27,6 +23,6 @@ export const cartSlice = createSlice({
 
 })
 
-export const {sendProduct, addToCart, removeFromCart, setTotalAmount} = cartSlice.actions
+export const {addToCart, removeFromCart, setTotalAmount} = cartSlice.actions
 
 export default cartSlice.reducer;

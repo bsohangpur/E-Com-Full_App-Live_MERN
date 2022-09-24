@@ -1,28 +1,49 @@
-import React, { useContext } from 'react';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai'
 import { FaFacebookF, FaTwitter, FaInstagram, FaWhatsapp } from 'react-icons/fa'
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
 import Footer from '../../constant/Footer/Footer';
 import NavBar from '../../constant/Navbar/NavBar';
-import { ContextWrap } from '../../container/contexApi/States';
+import { CommentUpdate, FetchBlog } from '../../container/Redux/Reducers/blogSlice';
+
+
 
 const BlogDetail = () => {
-    const BlogData = useContext(ContextWrap);
-    const Data = BlogData.apiBlogData;
+    const link = useParams();
+    const dispatch = useDispatch();
+    const { data, status } = useSelector(state => state.blog);
+    const [comment, setComment] = useState({ name: '', description: '', email: '', subject: '' })
 
-    // const getWordStr = (str) => {
-    //     const arr = str.split('. ');
-    //     for(let i)
-    //     return (`${arr} .`)
-    // }
+    useEffect(() => {
+        dispatch(FetchBlog())
+    }, [dispatch])
 
-    return (
-        <section className="">
-            <NavBar />
+    const getData = (e) => {
+        setComment({ ...comment, [e.target.name]: e.target.value })
+    }
 
-            <div className="container grid place-items-center my-6">
-                {Data.map((data) => {
-                    const date = new Date(data.time);
-                    return(
+    if (status === 'loading') {
+        return <h1>Data is loading</h1>
+    }
+    else if (status === 'idle') {
+        const [blog] = data.filter((ele) => ele.title === link.id);
+
+        const Links = data.filter((ele) => ele.title !== link.id);
+
+        const date = new Date(blog.time);
+
+
+        const sendData = async () => {
+            const send = {comments: comment}
+            dispatch(CommentUpdate(send, 'Add', blog._id))
+        }
+
+        return (
+            <section className="">
+                <NavBar />
+                <div className="container grid place-items-center my-6">
                     <div className="flex w-4/5">
                         <div className="w-3/4">
                             <div className="all-blog-posts">
@@ -30,27 +51,22 @@ const BlogDetail = () => {
                                     <div className="">
                                         <div className="blog-post">
                                             <div className="w-5/6">
-                                                <img src={`http://localhost:3000/${data.image}`} alt={data.imageAlt[0]} />
+                                                <img src={`http://localhost:3000/${blog.image[0]}`} alt={blog.imageAlt[0]} />
                                             </div>
                                             <div className="w-5/6 mt-4 p-2 bg-slate-50 shadow-md">
-                                                <span className='capitalize text-3xl'>{data.title}</span>
-                                                <h4 className='capitalize text-lg'>{data.creater}</h4>
+                                                <span className='capitalize text-3xl'>{blog.title}</span>
+                                                <h4 className='capitalize text-lg'>{blog.creater}</h4>
                                                 <ul className="flex gap-2 my-2">
                                                     <li><a href="/">Admin</a></li>
                                                     <hr className='w-0.5 h-5 bg-black' />
                                                     <li><a href="/">{date.toString().slice(0, 15)}</a></li>
                                                     <hr className='w-0.5 h-5 bg-black' />
-                                                    <li><a href="/">{data.comments.length} Comments</a></li>
+                                                    <li><a href="/">{blog.comments.length} Comments</a></li>
                                                 </ul>
-                                                <p className='mb-4'>
-                                                    {/* {getWordStr(data.content)} */}
-                                                    <br /><br />
-                                                    Donec tincidunt leo nec magna gravida varius.
-                                                    Suspendisse felis orci, egestas ac sodales quis, venenatis et neque.
-                                                    Vivamus facilisis dignissim arcu et blandit. Maecenas finibus dui non pulvinar lacinia.
-                                                    Ut lacinia finibus lorem vel porttitor. Suspendisse et metus nec libero ultrices
-                                                    varius eget in risus. Cras id nibh at erat pulvinar malesuada et non ipsum.
-                                                    Suspendisse id ipsum leo.</p>
+                                                {
+                                                        blog.content.split('. ').map((ele, index) => {
+                                                            return (<p key={index}>{ele + ". "}<br /></p>);
+                                                        })}
                                                 <hr />
                                                 <div className="mt-4">
                                                     <div className="flex my-2">
@@ -71,50 +87,30 @@ const BlogDetail = () => {
                                     <div className="">
                                         <div className="mt-2 w-5/6">
                                             <div className="sidebar-heading">
-                                                <h2 className='text-lg capitalize'>4 comments</h2>
+                                                <h2 className='text-lg capitalize'>{blog.comments.length} comments</h2>
                                             </div>
                                             <hr />
                                             <div className="mt-2">
                                                 <ul className='grid gap-4'>
-                                                    <li className='flex w-full'>
-                                                        <div className="w-1/5">
-                                                            <img className='w-32' src="https://cdn.pixabay.com/photo/2016/07/22/16/54/portrait-1535266_960_720.jpg" alt="" />
-                                                        </div>
-                                                        <div className="w-4/5">
-                                                            <h4 className='text-sm'><span className='font-bold text-base pr-2'>Thirteen Man</span>May 20, 2020</h4>
-                                                            <p>Fusce ornare mollis eros. Duis et diam vitae justo fringilla condimentum eu quis leo. Vestibulum id turpis porttitor sapien facilisis scelerisque. Curabitur a nisl eu lacus convallis eleifend posuere id tellus.</p>
-                                                        </div>
-                                                    </li>
-                                                    <hr />
-                                                    <li className='flex w-full pl-24 gap-4'>
-                                                        <div className="w-1/5">
-                                                            <img className='w-32' src="https://cdn.pixabay.com/photo/2016/07/22/16/54/portrait-1535266_960_720.jpg" alt="" />
-                                                        </div>
-                                                        <div className="w-4/5">
-                                                            <h4 className='text-sm'><span className='font-bold text-base pr-2'>Thirteen Man</span>May 20, 2020</h4>
-                                                            <p>In porta urna sed venenatis sollicitudin. Praesent urna sem, pulvinar vel mattis eget.</p>
-                                                        </div>
-                                                    </li>
-                                                    <hr />
-                                                    <li className='flex w-full'>
-                                                        <div className="w-1/5">
-                                                            <img className='w-32' src="https://cdn.pixabay.com/photo/2016/07/22/16/54/portrait-1535266_960_720.jpg" alt="" />
-                                                        </div>
-                                                        <div className="w-4/5">
-                                                            <h4 className='text-sm'><span className='font-bold text-base pr-2'>Thirteen Man</span>May 20, 2020</h4>
-                                                            <p>Nullam nec pharetra nibh. Cras tortor nulla, faucibus id tincidunt in, ultrices eget ligula. Sed vitae suscipit ligula. Vestibulum id turpis volutpat, lobortis turpis ac, molestie nibh.</p>
-                                                        </div>
-                                                    </li>
-                                                    <hr />
-                                                    <li className='flex w-full pl-24 gap-4'>
-                                                        <div className="w-1/5">
-                                                            <img className='w-32' src="https://cdn.pixabay.com/photo/2016/07/22/16/54/portrait-1535266_960_720.jpg" alt="" />
-                                                        </div>
-                                                        <div className="w-4/5">
-                                                            <h4 className='text-sm'><span className='font-bold text-base pr-2'>Thirteen Man</span>May 20, 2020</h4>
-                                                            <p>Mauris sit amet justo vulputate, cursus massa congue, vestibulum odio. Aenean elit nunc, gravida in erat sit amet, feugiat viverra leo.</p>
-                                                        </div>
-                                                    </li>
+                                                    {
+                                                        blog.comments.length === 0
+                                                            ?
+                                                            ''
+                                                            :
+                                                            blog.comments.map((data, index) => {
+                                                                // const dates = new Date(data.time);
+                                                                return (
+                                                                    <li key={index} className='flex w-full'>
+                                                                        <div className="w-4/5">
+                                                                            <h4 className='text-sm'><span className='font-bold text-base pr-2'>{data.name}</span>{data.time.slice(0,10)}</h4>
+                                                                            <h5 className='text-base'>{data.subject}</h5>
+                                                                            <p>{data.description}</p>
+                                                                        </div>
+                                                                        <hr />
+                                                                    </li>
+                                                                )
+                                                            })
+                                                    }
                                                 </ul>
                                             </div>
                                         </div>
@@ -128,19 +124,56 @@ const BlogDetail = () => {
                                                 <form id="comment" action="#" method="post">
                                                     <div className="">
                                                         <div className="my-2">
-                                                            <input className='w-5/6 h-10 border-2 outline-none px-2' name="name" type="text" id="name" placeholder="Your name" required="" />
+                                                            <input
+                                                                onChange={getData}
+                                                                name='name'
+                                                                value={comment.name}
+                                                                className='w-5/6 h-10 border-2 outline-none px-2'
+                                                                type="text"
+                                                                id="name"
+                                                                placeholder="Your name" required />
                                                         </div>
                                                         <div className="my-2">
-                                                            <input className='w-5/6 h-10 border-2 outline-none px-2' name="email" type="text" id="email" placeholder="Your email" required="" />
+                                                            <input
+                                                                onChange={getData}
+                                                                name='email'
+                                                                value={comment.email}
+                                                                className='w-5/6 h-10 border-2 outline-none px-2'
+                                                                type="text" i
+                                                                d="email"
+                                                                placeholder="Your email"
+                                                                required />
                                                         </div>
                                                         <div className="my-2">
-                                                            <input className='w-5/6 h-10 border-2 outline-none px-2' name="subject" type="text" id="subject" placeholder="Subject" />
+                                                            <input
+                                                                onChange={getData}
+                                                                name='subject'
+                                                                value={comment.subject}
+                                                                className='w-5/6 h-10 border-2 outline-none px-2'
+                                                                type="text"
+                                                                id="subject"
+                                                                placeholder="Subject" />
                                                         </div>
                                                         <div className="">
-                                                            <textarea className='w-5/6 border-2 outline-none px-2' name="message" rows="6" id="message" placeholder="Type your comment" required=""></textarea>
+                                                            <textarea
+                                                                onChange={getData}
+                                                                name='description'
+                                                                value={comment.description}
+                                                                className='w-5/6 border-2 outline-none px-2'
+                                                                rows="6"
+                                                                id="message"
+                                                                placeholder="Type your comment"
+                                                                required>
+                                                            </textarea>
                                                         </div>
                                                         <div className="">
-                                                            <button className="bg-yellow-400 px-6 py-3 rounded-sm hover:text-yellow-400 hover:bg-gray-500" type="submit" id="form-submit" >Submit</button>
+                                                            <button
+                                                                onClick={(e) => sendData(e.preventDefault())}
+                                                                className="bg-yellow-400 px-6 py-3 rounded-sm hover:text-yellow-400 hover:bg-gray-500"
+                                                                type="submit"
+                                                                id="form-submit" >
+                                                                Submit
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -169,20 +202,20 @@ const BlogDetail = () => {
                                             <hr />
                                             <div className="my-2">
                                                 <ul>
-                                                    <li><a href="post-details.html">
-                                                        <h5 className='text-lg font-bold'>Vestibulum id turpis porttitor sapien facilisis scelerisque</h5>
-                                                        <span className='text-sm'>May 31, 2020</span>
-                                                    </a></li>
-                                                    <hr />
-                                                    <li><a href="post-details.html">
-                                                        <h5 className='text-lg font-bold'>Suspendisse et metus nec libero ultrices varius eget in risus</h5>
-                                                        <span className='text-sm'>May 28, 2020</span>
-                                                    </a></li>
-                                                    <hr />
-                                                    <li><a href="post-details.html">
-                                                        <h5 className='text-lg font-bold'>Swag hella echo park leggings, shaman cornhole ethical coloring</h5>
-                                                        <span className='text-sm'>May 14, 2020</span>
-                                                    </a></li>
+                                                    {
+                                                        Links.slice(0, 5).map((data, index) => {
+                                                            const date = new Date(data.time);
+                                                            return (
+                                                                <li key={index}>
+                                                                    <Link to={`/blog/${data.title}`}>
+                                                                        <h5 className='text-lg font-bold'>{data.title}</h5>
+                                                                        <span className='text-sm'>{date.toString().slice(0, 10)}</span>
+                                                                    </Link>
+                                                                    <hr />
+                                                                </li>
+                                                            )
+                                                        })
+                                                    }
                                                 </ul>
                                             </div>
                                         </div>
@@ -195,12 +228,17 @@ const BlogDetail = () => {
                                             <hr />
                                             <div className="mt-2">
                                                 <ul className='font-bold'>
-                                                    <li><a href="/">- Nature Lifestyle</a></li>
-                                                    <li><a href="/">- Awesome Layouts</a></li>
-                                                    <li><a href="/">- Creative Ideas</a></li>
-                                                    <li><a href="/">- Responsive Templates</a></li>
-                                                    <li><a href="/">- HTML5 / CSS3 Templates</a></li>
-                                                    <li><a href="/">- Creative &amp; Unique</a></li>
+                                                    {
+                                                        blog.categories.length === 0
+                                                            ?
+                                                            ''
+                                                            :
+                                                            blog.categories.map((data, index) => {
+                                                                return (
+                                                                    <li key={index}><a href="/">- {data}</a></li>
+                                                                )
+                                                            })
+                                                    }
                                                 </ul>
                                             </div>
                                         </div>
@@ -213,13 +251,17 @@ const BlogDetail = () => {
                                             <hr />
                                             <div className="mt-2">
                                                 <ul className='flex flex-wrap gap-2 '>
-                                                    <li className='border-2 py-2 px-2 hover:bg-gray-500'><a href="/" className='hover:text-slate-50'>Lifestyle</a></li>
-                                                    <li className='border-2 py-2 px-2 hover:bg-gray-500'><a href="/" className='hover:text-slate-50'>Creative</a></li>
-                                                    <li className='border-2 py-2 px-2 hover:bg-gray-500'><a href="/" className='hover:text-slate-50'>HTML5</a></li>
-                                                    <li className='border-2 py-2 px-2 hover:bg-gray-500'><a href="/" className='hover:text-slate-50'>Inspiration</a></li>
-                                                    <li className='border-2 py-2 px-2 hover:bg-gray-500'><a href="/" className='hover:text-slate-50'>Motivation</a></li>
-                                                    <li className='border-2 py-2 px-2 hover:bg-gray-500'><a href="/" className='hover:text-slate-50'>PSD</a></li>
-                                                    <li className='border-2 py-2 px-2 hover:bg-gray-500'><a href="/" className='hover:text-slate-50'>Responsive</a></li>
+                                                    {
+                                                        blog.tags.length === 0
+                                                            ?
+                                                            ''
+                                                            :
+                                                            blog.tags.map((data, index) => {
+                                                                return (
+                                                                    <li key={index} className='border-2 py-2 px-2 hover:bg-gray-500'><a href="/" className='hover:text-slate-50'>{data}</a></li>
+                                                                )
+                                                            })
+                                                    }
                                                 </ul>
                                             </div>
                                         </div>
@@ -228,11 +270,14 @@ const BlogDetail = () => {
                             </div>
                         </div>
                     </div>
-                )})}
-            </div>
-            <Footer />
-        </section>
-    )
+                </div>
+                <Footer />
+            </section>
+        )
+    }
+    else {
+        return <h1>Somethig wents wrong!</h1>
+    }
 }
 
 export default BlogDetail

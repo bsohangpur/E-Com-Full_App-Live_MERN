@@ -32,29 +32,29 @@ const Dashboard = () => {
 
     return (
         <div>
-            <div class="relative bg-blue-300 md:pt-32 pb-32 pt-12">
-                <div class="px-4 md:px-10 mx-auto w-full">
+            <div className="relative bg-cyan-400 md:pt-32 pb-32 pt-12">
+                <div className="px-4 md:px-10 mx-auto w-full">
                     <Value data={total} />
                 </div>
             </div>
-            <div class="px-4 md:px-10 mx-auto w-full -m-24">
-                <div class="flex flex-wrap">
-                    <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-                        <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blueGray-700">
-                            <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
-                                <div class="flex flex-wrap items-center">
-                                    <div class="relative w-full max-w-full flex-grow flex-1">
-                                        <h6 class="uppercase text-blueGray-100 mb-1 text-xs font-semibold">
+            <div className="px-4 md:px-10 mx-auto w-full -m-24">
+                <div className="flex flex-wrap">
+                    <div className="w-2/3 mb-12 xl:mb-0 px-4">
+                        <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-neutral-100">
+                            <div className="rounded-t mb-0 px-4 py-3">
+                                <div className="flex flex-wrap items-center">
+                                    <div className="relative w-full max-w-full flex-grow flex-1">
+                                        <h6 className="uppercase text-blueGray-100 mb-1 text-xs font-semibold">
                                             Overview
                                         </h6>
-                                        <h2 class="text-white text-xl font-semibold">
+                                        <h2 className="text-black text-xl font-semibold">
                                             Sales value
                                         </h2>
                                     </div>
                                 </div>
                             </div>
-                            <div class="p-4 flex-auto">
-                                <div class="relative mx-auto w-2/3">
+                            <div className="p-4 flex-auto">
+                                <div className="relative mx-auto w-2/3">
                                     <div className="">
                                         <Doughnut
                                             data={{
@@ -83,22 +83,22 @@ const Dashboard = () => {
                             </div>
                         </div>
                     </div>
-                    <div class="w-full xl:w-4/12 px-4">
-                        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-                            <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
-                                <div class="flex flex-wrap items-center">
-                                    <div class="relative w-full max-w-full flex-grow flex-1">
-                                        <h6 class="uppercase text-blueGray-400 mb-1 text-xs font-semibold">
+                    <div className="w-1/3 px-4">
+                        <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+                            <div className="rounded-t mb-0 px-4 py-3 bg-transparent">
+                                <div className="flex flex-wrap items-center">
+                                    <div className="relative w-full max-w-full flex-grow flex-1">
+                                        <h6 className="uppercase text-blueGray-400 mb-1 text-xs font-semibold">
                                             Performance
                                         </h6>
-                                        <h2 class="text-blueGray-700 text-xl font-semibold">
+                                        <h2 className="text-blueGray-700 text-xl font-semibold">
                                             Total orders
                                         </h2>
                                     </div>
                                 </div>
                             </div>
-                            <div class="p-4 flex-auto">
-                                <div class="relative h-350-px">
+                            <div className="p-4 flex-auto">
+                                <div className="relative h-350-px">
                                     <Bar data={{
                                         labels:['Stock', 'Out Of Stock'],
                                         datasets: [
@@ -114,11 +114,11 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-wrap mt-4">
-                    <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
+                <div className="flex flex-wrap mt-4">
+                    <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
                         <Visits data={pdata} />
                     </div>
-                    <div class="w-full xl:w-4/12 px-4">
+                    <div className="w-full xl:w-4/12 px-4">
                         <Traffics />
                     </div>
                 </div>

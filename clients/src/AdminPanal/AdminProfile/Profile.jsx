@@ -1,53 +1,98 @@
 import React from 'react';
-import ProfileImg from "../../assets/person-1.jpg"
+import ProfileImg from "../../assets/person-1.jpg";
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react';
+import { VerifyUser } from '../../container/Redux/Reducers/userSlice';
+import Loading from '../../constant/Loading/Loading';
+import { GrLocation } from 'react-icons/gr'
+import { Link, Outlet } from 'react-router-dom';
 
 const Profile = () => {
-    return (
-        <div className='w-3/4 mt-12'>
-            <div class="shadow-md w-3/4 p-4">
-                <div class="card-header pb-0 p-3">
-                    <div class="row">
-                        <div class="flex items-center">
-                            <h6 class="mb-0">Profile Information</h6>
-                        </div>
-                        <div class="text-end">
-                            <a href="/">
-                                <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body p-3">
-                    <div className="grid place-items-center">
-                        <p class="text-sm">
-                            Hi, I’m Alec Thompson, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality).
-                        </p>
-                        <img className=' rounded-full w-1/4' src={ProfileImg} alt="" />
-                    </div>
+    const dispatch = useDispatch();
+    const { data, status } = useSelector(state => state.user);
+    const { name, phone, email, username, detail, address } = data
 
-                    <hr class="horizontal gray-light my-4" />
-                    <ul class="list-group">
-                        <li class="list-group-item border-0 p-0 pt-0 text-sm"><strong class="text-dark">Full Name:</strong> &nbsp; Alec M. Thompson</li>
-                        <li class="list-group-item border-0 p-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; (44) 123 1234 123</li>
-                        <li class="list-group-item border-0 p-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; alecthompson@mail.com</li>
-                        <li class="list-group-item border-0 p-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; USA</li>
-                        <li class="list-group-item border-0 p-0 pb-0">
-                            <strong class="text-dark text-sm">Social:</strong> &nbsp;
-                            <a class=" mb-0 px-2 py-0" href="/">
-                                <i class="fab fa-facebook fa-lg"></i>
-                            </a>
-                            <a class="mb-0 px-2 py-0" href="/">
-                                <i class="fab fa-twitter fa-lg"></i>
-                            </a>
-                            <a class="mb-0 px-2 py-0" href="/">
-                                <i class="fab fa-instagram fa-lg"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+    useEffect(() => {
+        dispatch(VerifyUser())
+    }, [dispatch])
+
+    if (status === 'loading') {
+        return (
+            <div style={{ height: "80vh" }} className="grid place-items-center">
+                <Loading />
             </div>
-        </div>
-    )
+        )
+    }
+    else if (status === 'idle') {
+
+        return (
+            <section className="flex justify-center w-full py-16 bg-blueGray-200">
+                <div className="container mx-auto px-4 w-5/6">
+                    <div
+                        className=" flex flex-col min-w-0 break-words bg-white mb-6 shadow-xl rounded-lg"
+                    >
+                        <div className="px-6">
+                            <div className="flex flex-wrap justify-center">
+                                <div
+                                    className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center"
+                                >
+                                    <div className="w-32 h-32 text-xs rounded-full bg-slate-50 grid place-content-center">
+                                        Coming Soon...
+                                    </div>
+                                </div>
+                                <div className="w-full mt-6 flex justify-between items-center">
+                                    <div className="">
+                                        Username - {username}
+                                    </div>
+                                    <div className="">
+                                        <Link
+                                            to='/admin/profile/edit'
+                                            className="bg-sky-400 active:bg-sky-500 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
+                                            >
+                                            Edit
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="text-center mt-12">
+                                <h3
+                                    className="text-4xl capitalize font-semibold leading-normal text-blueGray-700 mb-2"
+                                >
+                                    {name.firstName} {name.lastName}
+                                </h3>
+                                <div
+                                    className="text-lg flex justify-center items-center gap-4 leading-normal mt-0 mb-2 text-blueGray-400 font-bold capitalize"
+                                >
+                                    <GrLocation/>
+                                    {address === undefined ? '...' : address.country}
+                                </div>
+                                <div className="mb-2 text-blueGray-600 mt-10">
+                                    Email - {email}
+                                </div>
+                                <div className="mb-2 text-blueGray-600">
+                                    Phone No - {phone}
+                                </div>
+                            </div>
+                            <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
+                                <div className="flex flex-wrap justify-center">
+                                    <div className="px-4">
+                                        <p className="mb-4 text-lg leading-relaxed text-blueGray-700">
+                                            {detail.length === 0 ? 'Your Detail' : detail}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        )
+    }
+    else {
+        return (
+            <h1>Something went wrong</h1>
+        )
+    }
 }
 
 export default Profile

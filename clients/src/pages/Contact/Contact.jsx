@@ -4,6 +4,7 @@ import Footer from '../../constant/Footer/Footer';
 import HeroSection from '../../constant/HeroSection/HeroSection';
 import { MdOutlineLocationOn, MdAlternateEmail, MdPhone } from 'react-icons/md';
 import ContactImg from '../../assets/contactimg.png'
+import ContactForm from './ContactForm';
 
 const contact = {
     img: ContactImg,
@@ -54,32 +55,7 @@ const Contact = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <form>
-                                    <div className="flex flex-wrap ">
-                                        <div className="w-1/2 px-2">
-                                            <div className="my-1 grid">
-                                                <label className="text-black" for="fname">First name</label>
-                                                <input type="text" className=" border-2 outline-none text-lg pl-2 border-gray-400" id="fname" />
-                                            </div>
-                                        </div>
-                                        <div className="w-1/2 px-2">
-                                            <div className="my-1 grid">
-                                                <label className="text-black" for="lname">Last name</label>
-                                                <input type="text" className=" border-2 outline-none text-lg pl-2 border-gray-400" id="lname" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="my-1 grid mx-2">
-                                        <label className="text-black" for="email">Email address</label>
-                                        <input type="email" className=" border-2 outline-none text-lg pl-2 border-gray-400" id="email" />
-                                    </div>
-
-                                    <div className="my-1 grid mx-2 mb-5">
-                                        <label className="text-black" for="message">Message</label>
-                                        <textarea name="" className=" border-2 outline-none text-lg pl-2 border-gray-400" id="message" cols="30" rows="5"></textarea>
-                                    </div>
-                                    <button type="submit" className=" bg-stone-700 p-4 rounded-lg text-slate-50 hover:shadow-xl hover:text-slate-200">Send Message</button>
-                                </form>
+                               <ContactForm/>
                             </div>
                         </div>
                     </div>

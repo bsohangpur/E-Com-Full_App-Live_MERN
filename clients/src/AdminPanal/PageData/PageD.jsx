@@ -1,5 +1,6 @@
 import { AiOutlineShop, AiOutlineFileAdd, AiFillShopping, AiOutlineFolderAdd, AiOutlineEdit } from 'react-icons/ai';
 import { FaBlogger } from 'react-icons/fa';
+import {BiSupport} from 'react-icons/bi'
 
 //page destination.
 export const PageD = [{
@@ -36,4 +37,9 @@ export const PageD = [{
     pageIcon: <AiOutlineEdit className="text-xl text-gray-700" />,
     link: 'mainblogedit',
     pageName: 'Edit Blog'
+},
+{
+    pageIcon: <BiSupport className="text-xl text-gray-700" />,
+    link: 'complain',
+    pageName: 'Complain'
 }];

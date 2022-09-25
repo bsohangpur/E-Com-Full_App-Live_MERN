@@ -6,7 +6,9 @@ import MainProductEdit from './AdminEditProduct/MainProductEdit';
 import AdminProduct from './AdminProduct/AdminProducts';
 import AddProduct from './AdminProductAdd/AddProductData';
 import Profile from './AdminProfile/Profile';
+import ProfileEdit from './AdminProfile/ProfileEdit';
 import ProductSearch from './AdminSearch/ProductSearch';
+import Complain from './AdminComplain/AdminComplain';
 
 
 export {
@@ -18,5 +20,7 @@ export {
     AdminProduct,
     AddProduct,
     Profile,
-    ProductSearch
+    ProfileEdit,
+    ProductSearch,
+    Complain
 }

@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import blogReducer from './Reducers/blogSlice';
 import cartSlice from "./Reducers/cartSlice";
+import complainSlice from "./Reducers/complainSlice";
 import loginSlice from "./Reducers/loginSlice";
 import productSlice from "./Reducers/productSlice";
 import registerSlice from "./Reducers/registerSlice";
@@ -14,7 +15,8 @@ const store = configureStore({
         register: registerSlice,
         login: loginSlice,
         cart: cartSlice,
-        user: userSlice
+        user: userSlice,
+        complain:complainSlice
     }
 });
 

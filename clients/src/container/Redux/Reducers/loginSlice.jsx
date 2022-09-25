@@ -1,42 +1,47 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const url = 'http://localhost:3000/login/data'
+const url = 'https://server-production-c696.up.railway.app/login/data'
 
 export const STATUS = Object.freeze({
-    Failed:'failed',
-    Success:'success'
+    Failed: 'failed',
+    Success: 'success'
 })
 
 const loginSlice = createSlice({
-    name:'login',
-    initialState:{
-        data:'',
-        status:{
-            message:'',
-            status:''
+    name: 'login',
+    initialState: {
+        data: '',
+        status: {
+            message: '',
+            status: ''
         },
-        auth:false
+        auth: false
     },
-    reducers:{
-        setStatus:(state, action)=>{
+    reducers: {
+        setStatus: (state, action) => {
             state.status.status = action.payload.status === STATUS.Success ? STATUS.Success : STATUS.Failed;
             state.status.message = action.payload.message;
         },
-        setAuth:(state, action)=>{
+        setAuth: (state, action) => {
             state.auth = action.payload === STATUS.Success ? true : false;
         }
     }
 })
 
-export function SendData(data){
-    return async function sendData(dispatch){
-        const res = await axios.post(url, data, { withCredentials: true });
+export function SendData(data) {
+    return async function sendData(dispatch) {
+        const res = await axios.post(url, data, {
+            header: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            }, withCredentials: true
+        });
         dispatch(setStatus(res.data))
     }
 
 }
 
-export const {setStatus, setAuth} =  loginSlice.actions;
+export const { setStatus, setAuth } = loginSlice.actions;
 
 export default loginSlice.reducer;

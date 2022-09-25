@@ -27,7 +27,7 @@ const Admin = () => {
 
     return (
         <div className=' relative'>
-            <aside className="admin-aside border-0 h-screen hidden md:block fixed bg-slate-100 shadow-lg rounded-xl px-10"
+            <aside className="admin-aside border-0 hidden md:block fixed bg-slate-100 shadow-lg rounded-xl px-10"
                 id="sidenav-main">
                 <div className="sidenav-header w-full h-20 grid place-items-center">
                     <Link className={`${menu ? 'opacity-0 w-0' : ''} m-0`} to='/'>

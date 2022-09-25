@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { About, Blog, BlogDetail, Cart, CheckOut, Contact, Home, Login, ProductDetail, Register, Shop } from './pages/index';
 import Admin from './AdminPanal/Admin/Admin';
-import { Dashboard, AdminBlog, AddBlog, MainBlogEdit, MainProductEdit, AdminProduct, AddProduct, Profile, ProductSearch } from './AdminPanal/index'
+import { Dashboard, AdminBlog, AddBlog, MainBlogEdit, MainProductEdit, AdminProduct, AddProduct, Profile, ProductSearch, Complain, ProfileEdit } from './AdminPanal/index'
 import Auth from './container/Authantication/Auth'
 
 const App = () => {
@@ -29,8 +29,12 @@ const App = () => {
             <Route path='blog' element={<AdminBlog />} />
             <Route path='addblog' element={<AddBlog />} />
             <Route path='mainblogedit' element={<MainBlogEdit />} />
-            <Route path='Profile' element={<Profile />} />
+            <Route path='profile' element={<Profile />} >
+              <Route index element={<Profile />} />
+              <Route path='edit' element={<ProfileEdit />} />
+            </Route>
             <Route path='productsearch' element={<ProductSearch />} />
+            <Route path='complain' element={<Complain />} />
           </Route>
         </Route>
       </Routes>

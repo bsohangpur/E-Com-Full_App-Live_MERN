@@ -65,7 +65,9 @@ app.use('/login', Login);
 const User = require('./Routes/User');
 app.use('/user', User);
 
-
+//Complain Routes
+const Complain = require('./Routes/Complain');
+app.use('/complain', Complain);
 
 // app.get('/', (req, res) => {
 //     app.use(express.static(path.resolve(__dirname, 'clients', 'build')))

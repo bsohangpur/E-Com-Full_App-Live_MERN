@@ -31,19 +31,6 @@ express.post('/data', Uploads.array('image'), async (req, res) => {
     }
 })
 
-//adding blog comments data on same blog id.
-// express.put("/data/:id", async (req, res) => {
-//     const id = req.params.id;
-
-//     try {
-
-//     }
-//     catch (e) {
-//         res.send(e)
-//     }
-// })
-
-
 //get the value from api
 express.get('/data', async (req, res) => {
 

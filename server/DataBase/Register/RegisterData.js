@@ -8,7 +8,7 @@ const RegisterSchema = new mongodb.Schema({
         firstName: { type: String },
         lastName: { type: String }
     },
-    phone: { type: Number, min: 10 },
+    phone: { type: Number, min: 1111111111, max: 9999999999 },
     email: { type: String, minLength: 5 },
     username: { type: String },
     password: { type: String },
@@ -18,7 +18,7 @@ const RegisterSchema = new mongodb.Schema({
         apartment: { type: String },
         country: { type: String },
         state: { type: String },
-        zipCode: { type: Number, min: 6, max: 6 }
+        zipCode: { type: Number, min: 111111, max: 999999 }
     },
     comment: { type: String },
     checkin: { type: Boolean },

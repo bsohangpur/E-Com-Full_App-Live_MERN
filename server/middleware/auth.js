@@ -12,7 +12,7 @@ const Auth = async (req, res, next) => {
             req.token = token;
             const Data = {
                 name: userData.name,
-                address: userData.addres,
+                address: userData.address,
                 phone: userData.phone,
                 email: userData.email,
                 username: userData.username,

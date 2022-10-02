@@ -2,13 +2,15 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { About, Blog, BlogDetail, Cart, CheckOut, Contact, Home, Login, ProductDetail, Register, Shop } from './pages/index';
 import Admin from './AdminPanal/Admin/Admin';
 import { Dashboard, AdminBlog, AddBlog, MainBlogEdit, MainProductEdit, AdminProduct, AddProduct, Profile, ProductSearch, Complain, ProfileEdit } from './AdminPanal/index'
-import Auth from './container/Authantication/Auth'
+import Auth from './container/Authantication/Auth';
+import ReviewPage from './container/ReviewPage/ReviewPage';
 
 const App = () => {
   return (
     // <State>
     <BrowserRouter>
       <Routes>
+        <Route path='/review' element={<ReviewPage />} />
         <Route path='/' element={<Home />} />
         <Route path='/shop' element={<Shop />} />
         <Route path='/about' element={<About />} />

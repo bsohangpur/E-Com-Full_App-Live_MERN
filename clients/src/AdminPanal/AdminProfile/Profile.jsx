@@ -1,21 +1,13 @@
-import React from 'react';
-import ProfileImg from "../../assets/person-1.jpg";
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react';
-import { VerifyUser } from '../../container/Redux/Reducers/userSlice';
+import React  from 'react';
+import { useSelector } from 'react-redux';
 import Loading from '../../constant/Loading/Loading';
 import { GrLocation } from 'react-icons/gr'
-import { Link, Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
-    const dispatch = useDispatch();
     const { data, status } = useSelector(state => state.user);
     const { name, phone, email, username, detail, address } = data
-
-    useEffect(() => {
-        dispatch(VerifyUser())
-    }, [dispatch])
-
+   
     if (status === 'loading') {
         return (
             <div style={{ height: "80vh" }} className="grid place-items-center">
@@ -77,7 +69,7 @@ const Profile = () => {
                                 <div className="flex flex-wrap justify-center">
                                     <div className="px-4">
                                         <p className="mb-4 text-lg leading-relaxed text-blueGray-700">
-                                            {detail.length === 0 ? 'Your Detail' : detail}
+                                            {detail === undefined ? 'Your Detail' : detail}
                                         </p>
                                     </div>
                                 </div>

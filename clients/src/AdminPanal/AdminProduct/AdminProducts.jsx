@@ -11,8 +11,8 @@ const ProductRemove = () => {
     }, [dispatch])
 
     return (
-        <div className='relative'>
-            <div style={{ width: "50rem" }} className='opacity-100' >
+        <div className='relative w-full mx-6 grid place-items-center'>
+            <div className='opacity-100 md:w-4/5 xl:w-2/3' >
                 <div className="text-xl my-4">
                     <h2 className="text-bold">All Products</h2>
                 </div>

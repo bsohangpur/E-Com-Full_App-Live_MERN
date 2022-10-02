@@ -8,16 +8,19 @@ import { FetchBlog } from '../../container/Redux/Reducers/blogSlice';
 import { FetchProduct } from '../../container/Redux/Reducers/productSlice';
 import { Doughnut, Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
+import { FetchComplain } from '../../container/Redux/Reducers/complainSlice';
 
 
 const Dashboard = () => {
     const dispatch = useDispatch();
     const pdata = useSelector(state => state.product);
     const bdata = useSelector(state => state.blog);
+    const cdata = useSelector(state => state.complain)
 
     useEffect(() => {
         dispatch(FetchProduct())
         dispatch(FetchBlog())
+        dispatch(FetchComplain())
     }, [dispatch])
 
     const outOfStock = pdata.data.filter((ele) => { return ele.stock > 0 }).length
@@ -27,11 +30,12 @@ const Dashboard = () => {
         products: pdata.data.length,
         blogs: bdata.data.length,
         stocks: (outOfStock / pdata.data.length) * 100,
+        complain : cdata.data.length
         // lastUpdate: createdOn
     }
 
     return (
-        <div>
+        <div className='w-full mx-6'>
             <div className="relative bg-cyan-400 md:pt-32 pb-32 pt-12">
                 <div className="px-4 md:px-10 mx-auto w-full">
                     <Value data={total} />
@@ -116,7 +120,7 @@ const Dashboard = () => {
                 </div>
                 <div className="flex flex-wrap mt-4">
                     <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-                        <Visits data={pdata} />
+                        <Visits data={pdata}/>
                     </div>
                     <div className="w-full xl:w-4/12 px-4">
                         <Traffics />

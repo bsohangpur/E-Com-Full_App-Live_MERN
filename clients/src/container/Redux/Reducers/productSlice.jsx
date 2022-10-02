@@ -70,6 +70,7 @@ export function ProductUpdate(data, action, id) {
         case "Edit": {
           dispatch(productStatus(Status.Updating))
           await axois.put(`${url}/${id}`, data);
+          console.log("Edit")
           dispatch(productStatus(Status.Update));
           break;
         }

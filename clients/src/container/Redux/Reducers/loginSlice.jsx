@@ -1,11 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const url = 'https://server-production-c696.up.railway.app/login/data'
+const url = 'http://localhost:3000/login/data'
 
 export const STATUS = Object.freeze({
     Failed: 'failed',
     Success: 'success'
+})
+
+
+const Admin = Object.freeze({
+    nouser : 1111,
+    admin: 2001,
+    user: 1996
 })
 
 const loginSlice = createSlice({
@@ -16,15 +23,19 @@ const loginSlice = createSlice({
             message: '',
             status: ''
         },
-        auth: false
+        admin: {
+            admin:false,
+            type : Admin.nouser
+        }
     },
     reducers: {
         setStatus: (state, action) => {
             state.status.status = action.payload.status === STATUS.Success ? STATUS.Success : STATUS.Failed;
             state.status.message = action.payload.message;
         },
-        setAuth: (state, action) => {
-            state.auth = action.payload === STATUS.Success ? true : false;
+        setAdmin:(state, action)=>{
+            state.admin.admin = action.payload.admin
+            state.admin.type = action.payload.type === Admin.admin ? Admin.admin : Admin.user;
         }
     }
 })
@@ -38,10 +49,11 @@ export function SendData(data) {
             }, withCredentials: true
         });
         dispatch(setStatus(res.data))
+        dispatch(setAdmin(res.data.admin))
     }
 
 }
 
-export const { setStatus, setAuth } = loginSlice.actions;
+export const { setStatus, setAdmin } = loginSlice.actions;
 
 export default loginSlice.reducer;

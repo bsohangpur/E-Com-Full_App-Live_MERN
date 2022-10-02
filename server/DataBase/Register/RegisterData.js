@@ -23,15 +23,18 @@ const RegisterSchema = new mongodb.Schema({
     comment: { type: String },
     checkin: { type: Boolean },
     token: { type: String },
-    admin: { type: Boolean }
+    admin: {
+        admin: { type: Boolean },
+        type: { type: Number }
+    }
 })
 
-RegisterSchema.methods.genrateToken = async function(){
-    try{
-        const token = jwt.sign({_id:this._id} , process.env.JWT_SECRET_KEY);
-        this.token=token;
+RegisterSchema.methods.genrateToken = async function () {
+    try {
+        const token = jwt.sign({ _id: this._id }, process.env.JWT_SECRET_KEY);
+        this.token = token;
         await this.save()
-    }catch(error){
+    } catch (error) {
         console.log(error)
     }
 }

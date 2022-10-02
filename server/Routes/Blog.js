@@ -60,7 +60,6 @@ express.put('/data/:id', Uploads.array('image'), async (req, res) => {
                 tags: req.body.tags
             })
             res.send({ status: "success", message: "Data updated successfully" })
-            console.log("1")
         }
         else if (req.files && req.body.title || req.body.creater || req.body.content || req.body.categories || req.body.tags) {
             const blogimg = req.files.map((file) => { return file.path });
@@ -75,7 +74,6 @@ express.put('/data/:id', Uploads.array('image'), async (req, res) => {
                 imageAlt: blogimgalt
             })
             res.send({ status: "success", message: "Data updated with Image successfully" })
-            console.log("2")
         }
         if (req.body.comments) {
             const Data = await BlogData.findByIdAndUpdate(id,
@@ -86,7 +84,6 @@ express.put('/data/:id', Uploads.array('image'), async (req, res) => {
                 }
             )
             res.send({ status: "success", message: "comment Added successfully" })
-            console.log("3")
         }
     }
 

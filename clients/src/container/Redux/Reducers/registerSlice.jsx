@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const url = 'https://server-production-c696.up.railway.app/register/data'
+const url = 'http://localhost:3000/register/data'
 
 
 const registerSlice = createSlice({

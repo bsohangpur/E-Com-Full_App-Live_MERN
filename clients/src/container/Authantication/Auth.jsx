@@ -1,37 +1,35 @@
 import React from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import { useEffect } from 'react';
-import axios from 'axios';
-
+import { useDispatch, useSelector } from 'react-redux'
+import { Admin, VerifyUser } from '../Redux/Reducers/userSlice';
+import { Status } from '../Redux/Reducers/userSlice';
+import Loading from '../../constant/Loading/Loading';
 
 const Auth = () => {
-    const navigate = useNavigate();
-    const UserAuth = async () => {
-
-        try {
-            const url = 'https://server-production-c696.up.railway.app/user/data';
-            const res = await axios.get(url, {
-                header: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json"
-                }, withCredentials: true
-            });
-
-            if (res.status !== 200) {
-                console.log("page not found")
-            }
-
-        } catch (e) {
-            console.log(e)
-            navigate('/login')
-        }
-    }
+    const dispatch = useDispatch();
+    const { status, admin } = useSelector(state => state.user);
 
     useEffect(() => {
-        UserAuth()
-    }, []);
+        dispatch(VerifyUser())
+    }, [dispatch]);
 
-    return < Outlet />
+    if (status === Status.Loading) {
+        return (
+            <div className="grid h-screen w-full place-items-center">
+                <Loading />
+            </div>
+        )
+    }
+    else if (status === Status.Idle) {
+        if (admin.admin === true && admin.type === Admin.admin) {
+            return < Outlet />
+        }
+        else { return <Navigate to='/' /> }
+    }
+    else if (status === Status.Errors) {
+        return <Navigate to='/login' />
+    }
 
 }
 

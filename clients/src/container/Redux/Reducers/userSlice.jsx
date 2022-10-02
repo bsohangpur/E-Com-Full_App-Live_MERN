@@ -1,14 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const url = 'https://server-production-c696.up.railway.app/user/data'
+const url = 'http://localhost:3000/user/data'
 
-// export const STATUS = Object.freeze({
-//     Failed: 'failed',
-//     Success: 'success'
-// })
 
-const Status = Object.freeze({
+export const Status = Object.freeze({
     Idle: "idle",
     Loading: "loading",
     Errors: "error",
@@ -19,7 +15,8 @@ const Status = Object.freeze({
     Update: "update"
 });
 
-const Admin = Object.freeze({
+export const Admin = Object.freeze({
+    nouser : 1111,
     admin: 2001,
     user: 1996
 })
@@ -29,7 +26,10 @@ const userSlice = createSlice({
     initialState: {
         data: '',
         status: 'server is starting ...',
-        auth: 0
+        admin: {
+            admin:undefined,
+            type : Admin.nouser
+        }
     },
     reducers: {
         setUser: (state, action) => {
@@ -37,6 +37,10 @@ const userSlice = createSlice({
         },
         setStatus: (state, action) => {
             state.status = action.payload;
+        },
+        setAdmin:(state, action)=>{
+            state.admin.admin = action.payload.admin
+            state.admin.type = action.payload.type === Admin.admin ? Admin.admin : Admin.user;
         }
     }
 })
@@ -52,6 +56,7 @@ export function VerifyUser() {
                 }, withCredentials: true
             });
             dispatch(setUser(res.data.user))
+            dispatch(setAdmin(res.data.admin))
             dispatch(setStatus(Status.Idle))
         } catch (e) {
             dispatch(setStatus(Status.Errors))
@@ -60,6 +65,7 @@ export function VerifyUser() {
 
 }
 
-export const { setStatus, setUser } = userSlice.actions;
+
+export const { setStatus, setUser, setAdmin } = userSlice.actions;
 
 export default userSlice.reducer;

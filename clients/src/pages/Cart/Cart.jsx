@@ -1,14 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import NavBar from '../../constant/Navbar/NavBar';
 import Footer from '../../constant/Footer/Footer';
 import PageNotFound from '../../constant/PageNotFound/PageNotFound';
 import CartPerProduct from './CartPerProduct';
-import { ContextWrap } from '../../container/contexApi/States';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const Cart = () => {
-    const PData = useContext(ContextWrap);
     const { data, totalAmount } = useSelector(state => state.cart);
 
     return (
@@ -59,7 +57,7 @@ const Cart = () => {
                                             <li className='flex justify-between'><span>total:</span> <span>{totalAmount === 0 ? 0 : totalAmount + 50} ₹</span></li>
                                         </ul>
                                         <div className="flex justify-center">
-                                            <div className={` ${PData.totalCartAmount === 0 ? '-z-10' : ''} w-4/5 bg-amber-500 h-12 rounded-sm grid place-content-center`}>
+                                            <div className={` ${totalAmount === 0 ? '-z-10' : ''} w-4/5 bg-amber-500 h-12 rounded-sm grid place-content-center`}>
                                                 <Link to="/checkout" className="text-gray-50">Checkout</Link>
                                             </div>
                                         </div>

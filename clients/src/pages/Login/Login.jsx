@@ -32,7 +32,6 @@ const Login = () => {
 
     if (Status === STATUS.Success) {
         setTimeout(() => {
-            dispatch(setAuth(Status));
             navigate('/admin');
             dispatch(setStatus(''))
         }, 1000);

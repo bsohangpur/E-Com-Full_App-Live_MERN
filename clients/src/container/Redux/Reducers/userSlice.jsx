@@ -38,9 +38,11 @@ const userSlice = createSlice({
         setStatus: (state, action) => {
             state.status = action.payload;
         },
-        setAdmin:(state, action)=>{
-            state.admin.admin = action.payload.admin
-            state.admin.type = action.payload.type === Admin.admin ? Admin.admin : Admin.user;
+        setAdminType:(state, action)=>{
+            state.admin.type = action.payload
+        },
+        setAdminAdmin:(state, action)=>{
+            state.admin.admin = action.payload
         }
     }
 })
@@ -56,7 +58,16 @@ export function VerifyUser() {
                 }, withCredentials: true
             });
             dispatch(setUser(res.data.user))
-            dispatch(setAdmin(res.data.admin))
+            if(res.data.admin.type === Admin.admin){
+                dispatch(setAdminType(Admin.admin))
+                dispatch(setAdminAdmin(res.data.admin.admin))
+            }
+            else if(res.data.admin.type === Admin.user){
+                dispatch(setAdminType(Admin.user))
+            }
+            else{
+                dispatch(setAdminType(Admin.nouser))
+            }
             dispatch(setStatus(Status.Idle))
         } catch (e) {
             dispatch(setStatus(Status.Errors))
@@ -66,6 +77,6 @@ export function VerifyUser() {
 }
 
 
-export const { setStatus, setUser, setAdmin } = userSlice.actions;
+export const { setStatus, setUser, setAdminType, setAdminAdmin } = userSlice.actions;
 
 export default userSlice.reducer;

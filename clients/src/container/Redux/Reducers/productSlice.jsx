@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axois from 'axios';
 
-const url = 'http://localhost:3000/product/data';
+const url = 'http://192.168.0.107:3000/product/data';
 
-const Status = Object.freeze({
+export const Status = Object.freeze({
   Idle: "idle",
   Loading: "loading",
   Errors: "error",
@@ -23,6 +23,7 @@ export const productSlice = createSlice({
     button: {
       Add : false,
       Edit: false,
+      EditPage: false,
       Delete : false
     }
   },

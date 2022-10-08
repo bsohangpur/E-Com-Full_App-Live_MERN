@@ -1,0 +1,8 @@
+.ckeckout_form span{
+    color: red;
+    text-transform: capitalize;
+    font-size: 14px;
+}
+.ckeckout_form .checkout_span{
+    color: black;
+}

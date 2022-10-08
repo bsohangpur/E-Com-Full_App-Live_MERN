@@ -1,60 +1,80 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { MdEdit, MdDeleteOutline } from 'react-icons/md';
 import ProductEdit from './ProductEdit';
 import AdminAlert from '../AdminAlert/AdminAlert';
-import { ContextWrap } from "../../container/contexApi/States";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { FetchProduct, productButton } from '../../container/Redux/Reducers/productSlice';
-
+import { Status } from '../../container/Redux/Reducers/productSlice';
+import Loading from '../../constant/Loading/Loading'
+import AdminShortAlert from '../AdminAlert/AdminShortAlert';
 
 const MainProductEdit = () => {
     const dispatch = useDispatch();
-    const { data, button } = useSelector(state => state.product)
-    const Value = useContext(ContextWrap);
+    const { data, button, status } = useSelector(state => state.product)
     const [id, setId] = useState();
-    const [page, setPage] = useState({
-        Edit: false,
-        Delete: false
-    })
+    const [Data, setData] = useState();
+    const [page, setPage] = useState('')
 
     useEffect(() => {
         dispatch(FetchProduct())
     }, [dispatch])
 
-    const editProduct = () => {
-        Value.Mode('editproduct')
+    const editProduct = (value) => {
+        dispatch(productButton({ EditPage: true }))
+        setData(value)
+        setId(value._id)
+        setPage("Edit")
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
     }
-    const removeProduct = () => {
-        Value.Mode('deleteproduct');
+    const removeProduct = (id) => {
+        dispatch(productButton({ Delete: true }))
+        setId(id)
+        setPage("Delete")
     }
 
-    if (button.Delete) {
-        return <AdminAlert data={id} />
+    if (status === Status.Loading) {
+        return <Loading />
     }
-    else if (button.Edit) {
-        return <ProductEdit />
+    else if (status === Status.Errors) {
+        return <h1>Something went wront...</h1>
     }
     else {
         return (
             <div className=' relative grid place-items-center'>
-                {Value.button.EditProduct === true ? <ProductEdit /> : ''}
+                {/* {Value.button.EditProduct === true ? <ProductEdit /> : ''} */}
+                <div className="">
+                    {
+                        page === 'Delete'
+                            ?
+                            button.Delete ? <AdminAlert product={{ id, functions: "Delete" }} /> : ''
+                            :
+                            ''
+                    }
+                    {page === 'Edit'
+                        ?
+                        button.EditPage ? <ProductEdit product={{ id, data: Data }} /> : ''
+                        :
+                        ''
+                    }
+                </div>
+                <div className={`${button.EditPage || button.Delete ? 'opacity-50' : ' opacity-100'} w-4/5`}>
+                    {/* style={{ width: "50rem" }} className={Value.btn === true ? " absolute top-0 -z-10 opacity-20" : ""}  */}
 
-                <div style={{ width: "50rem" }} className={Value.btn === true ? " absolute top-0 -z-10 opacity-20" : ""} >
-                    {Value.button.DeleteProduct === true ? <AdminAlert productId={id} /> : ''}
                     <div className="text-xl my-4">
                         <h2 className="text-bold">Edit Your All Products</h2>
                     </div>
                     {data.map((value) => {
-                        const { title, description, priceCost, priceSell, image, imageAlt, category } = value
+                        const { title, description, priceCost, priceSell, image, imageAlt, category, _id } = value
                         return (
-                            <div key={value._id} className="shadow-lg py-0">
+                            <div key={_id} className="shadow-lg py-0">
                                 <div className="md:flex mb-5">
-                                    <div className="mr-3 w-1/4 shadow-md opacity-80 hover:opacity-100 bg-slate-200 rounded-md">
-                                        <a href="/"><img src={`http://localhost:3000/${image[0]}`} alt={imageAlt} className="p-2 w-full h-full" /></a>
+                                    <div className="mr-3 w-1/4 flex justify-center items-center shadow-md opacity-100 hover:opacity-80 bg-slate-200 rounded-md">
+                                        <img src={`http://localhost:3000/${image[0]}`} alt={imageAlt} className="p-2 w-60" />
                                     </div>
                                     <div className="w-2/3 px-4">
-                                        <a href="/"><h6 className="mb-3 capitalize font-medium">{title}</h6></a>
+                                        <h6 className="mb-3 capitalize font-medium">{title}</h6>
                                         <p className="my-1 float-md-right"><span className="mr-2 capitalize">{category}</span></p>
                                         <p className="my-4 ">{description}</p>
                                         <p className="mb-0">
@@ -63,25 +83,26 @@ const MainProductEdit = () => {
                                         </p>
                                     </div>
                                     <div className="flex justify-center items-center px-6">
-                                        <button onClick={() => {
-                                            editProduct()
-                                            setId(value._id)
-                                        }}><MdEdit className='w-8 h-8 text-gray-600 hover:text-black shadow-md' /></button>
+                                        <button onClick={() => { editProduct(value) }}><MdEdit className='w-8 h-8 text-gray-600 hover:text-black shadow-md' /></button>
                                     </div>
                                     <div className="flex justify-center items-center px-6">
-                                        <button onClick={() => {
-                                            dispatch(productButton({Delete:true}))
-                                            setPage({ Delete: !page.Delete })
-                                            setId(value._id)
-                                            // removeProduct()
-                                            // 
-                                        }}><MdDeleteOutline className='w-8 h-8 text-gray-600 hover:text-black shadow-md' /></button>
+                                        <button onClick={() => { removeProduct(_id) }}>
+                                            <MdDeleteOutline className='w-8 h-8 text-gray-600 hover:text-black shadow-md' />
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         )
                     })
                     }
+                    {
+                button.Edit
+                    ?
+                    <AdminShortAlert data={{page:"Product", functions:"Edited"}}/>
+                    :
+                    ""
+
+            }
                 </div>
             </div>
         )

@@ -10,7 +10,7 @@ import Testimonial from '../../constant/Testimonial/Testimonial';
 import HeroSection from '../../constant/HeroSection/HeroSection';
 import HomeImg from '../../assets/bowl-3.png';
 import BlogData from '../../container/BlogData/BlogData';
-import WhyChoseImg from '../../assets/why-choose-us-img.jpg'
+import WhyChoseImg from '../../assets/why-choose-us-img.jpg';
 
 const home = {
     img: HomeImg,

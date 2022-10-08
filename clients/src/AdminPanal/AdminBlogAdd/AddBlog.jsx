@@ -1,12 +1,13 @@
 import React, { useState, useContext } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { ContextWrap } from '../../container/contexApi/States';
 import { blogButton, BlogUpdate } from '../../container/Redux/Reducers/blogSlice';
 
 const AddBlog = () => {
     const dispatch = useDispatch();
     const BlogAdd = useContext(ContextWrap);
-    
+    const navigate = useNavigate();
     const [title, SetTitle] = useState("");
     const [creater, SetCreater] = useState("");
     const [content, SetContent] = useState("");
@@ -35,7 +36,8 @@ const AddBlog = () => {
             formData.append('categories', categoriesValue[i]);
         }
         dispatch(BlogUpdate(formData, "Add"));
-        dispatch(blogButton({Add:true}))
+        dispatch(blogButton({Add:true}));
+        navigate('/admin/blog')
         BlogAdd.setAdminActive('Blog')
         // BlogAdd.Mode('addblogalert', 'blog')
     }

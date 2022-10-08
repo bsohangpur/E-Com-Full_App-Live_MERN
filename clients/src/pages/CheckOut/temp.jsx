@@ -2,21 +2,40 @@ import React, { useState } from 'react';
 import NavBar from '../../constant/Navbar/NavBar';
 import Footer from '../../constant/Footer/Footer';
 import PageNotFound from '../../constant/PageNotFound/PageNotFound';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import CheckOutPerproduct from './CheckOutPerproduct';
 import { useForm } from 'react-hook-form'
-import './style.css'
 
 const CheckOut = () => {
-    const navigate =  useNavigate()
     const { data, totalAmount } = useSelector(state => state.cart);
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = (data) => {
-        navigate('/conformation')
-        console.log(data)
-    };
+    const onSubmit = (data) => console.log(data);
 
+    // const [name, setName] = useState({ firstName: '', lastName: '' });
+    // const [address, setAddress] = useState({ streetAddress: '', apartment: '', country: '', state: '', zipCode: '' })
+    // const [emailPhone, setEmailPhone] = useState({ email: '', phone: '', comment: '' });
+
+    // const getEmailPhone = (e) => {
+    //     setEmailPhone({ ...emailPhone, [e.target.name]: e.target.value });
+    // }
+    // const getName = (e) => {
+    //     setName({ ...name, [e.target.name]: e.target.value });
+    // }
+    // const getAddress = (e) => {
+    //     setAddress({ ...address, [e.target.name]: e.target.value });
+    // }
+    // const sendData = async () => {
+    //     const send = { name, email: emailPhone.email, phone: emailPhone.phone, comment: emailPhone.comment, address }
+    //     document.body.scrollTop = 0;
+    //     document.documentElement.scrollTop = 0;
+    // }
+    // if (status.status.status === 'success') {
+    //     setTimeout(() => {
+    //         history("/login");
+    //         dispatch(setStatus(''))
+    //     }, 1000);
+    // }
     return (
         <div className=''>
             <NavBar />
@@ -26,51 +45,46 @@ const CheckOut = () => {
                 //     <PageNotFound page={'Home'} />
                 //     :
                 <div className="container-fluid mt-4 w-full">
-                    <form className='ckeckout_form' onSubmit={handleSubmit(onSubmit)}>
-                        <div className="">
-                            <div className=" ">
-                                <div className="mx-auto w-4/5 my-4 text-3xl">
-                                    <h2>Checkout</h2>
-                                </div>
-                                <div className="flex gap-4 w-4/5 mx-auto">
-                                    <div className="w-2/3">
-
+                    <div className="">
+                        <div className=" ">
+                            <div className="mx-auto w-4/5 my-4 text-3xl">
+                                <h2>Checkout</h2>
+                            </div>
+                            <div className="flex gap-4 w-4/5 mx-auto">
+                                <div className="w-2/3">
+                                    <form onSubmit={handleSubmit(onSubmit)}>
                                         <div className="py-2">
                                             <div className="w-full px-4 mb-3">
                                                 <label htmlFor="name" className="text-black">Full Name <span className=" text-red-500">*</span></label>
                                                 <div className="flex gap-2 ">
-                                                    <div className="grid w-1/2">
-                                                        <input
-                                                            type="text"
-                                                            id="name"
-                                                            placeholder="Enter Name"
-                                                            className="w-full h-12 pl-2 rounded-sm outline-none border-none bg-gray-200"
-                                                            {...register('name.firstName', { required: true, maxLength: 20 })}
-                                                            name='name.firstName'
-                                                        />
-                                                        {errors.name && errors.name.firstName && errors.name.firstName.type === "required" && (
-                                                            <span role="alert">This is required</span>
-                                                        )}
-                                                        {errors.name && errors.name.firstName && errors.name.firstName.type === "maxLength" && (
-                                                            <span role="alert">Max length exceeded</span>
-                                                        )}
-                                                    </div>
-                                                    <div className="grid w-1/2">
-                                                        <input
-                                                            type="text"
-                                                            id="name"
-                                                            placeholder="Enter Name"
-                                                            className="w-full h-12 pl-2 rounded-sm outline-none border-none bg-gray-200"
-                                                            {...register('name.lastName', { required: true, maxLength: 20 })}
-                                                            name='name.lastName'
-                                                        />
-                                                        {errors.name && errors.name.lastName && errors.name.lastName.type === "required" && (
-                                                            <span role="alert">This is required</span>
-                                                        )}
-                                                        {errors.name && errors.name.lastName && errors.name.lastName.type === "maxLength" && (
-                                                            <span role="alert">Max length exceeded</span>
-                                                        )}
-                                                    </div>
+                                                    <input
+                                                        type="text"
+                                                        id="name"
+                                                        placeholder="Enter Name"
+                                                        className="w-full h-12 pl-2 rounded-sm outline-none border-none bg-gray-200"
+                                                        {...register('name', { required: true, maxLength: 20 })}
+                                                        name='name.firstname'
+                                                    />
+                                                    {errors.name && errors.name.type === "required" && (
+                                                        <span role="alert">This is required</span>
+                                                    )}
+                                                    {errors.name && errors.name.type === "maxLength" && (
+                                                        <span role="alert">Max length exceeded</span>
+                                                    )}
+                                                    <input
+                                                        type="text"
+                                                        id="name"
+                                                        placeholder="Enter Name"
+                                                        className="w-full h-12 pl-2 rounded-sm outline-none border-none bg-gray-200"
+                                                        {...register('name', { required: true, maxLength: 20 })}
+                                                        name='name.lastname'
+                                                    />
+                                                    {errors.name && errors.name.type === "required" && (
+                                                        <span role="alert">This is required</span>
+                                                    )}
+                                                    {errors.name && errors.name.type === "maxLength" && (
+                                                        <span role="alert">Max length exceeded</span>
+                                                    )}
                                                 </div>
                                             </div>
                                             <div className="w-full px-4 mb-3">
@@ -86,6 +100,7 @@ const CheckOut = () => {
                                                         }
                                                     })}
                                                     name='email'
+                                                // className={`${errors.email && errors.email.type && 'border-2 border-red-600'} outline-none w-full`}
                                                 />
                                                 {errors.email && errors.email.type === "required" && (
                                                     <span role="alert">This is required</span>
@@ -125,13 +140,13 @@ const CheckOut = () => {
                                                         id="address"
                                                         placeholder="Street address"
                                                         className="w-full h-12 pl-2 rounded-sm outline-none border-none bg-gray-200"
-                                                        {...register('address.streetAddress', { required: true, maxLength: 20 })}
-                                                        name='address.streetAddress'
+                                                        {...register('address', { required: true, maxLength: 20 })}
+                                                        name='address.street'
                                                     />
-                                                    {errors.address && errors.address.streetAddress && errors.address.streetAddress.type === "required" && (
+                                                    {errors.address && errors.address.type === "required" && (
                                                         <span role="alert">This is required</span>
                                                     )}
-                                                    {errors.address && errors.address.streetAddress && errors.address.streetAddress.type === "maxLength" && (
+                                                    {errors.address && errors.address.type === "maxLength" && (
                                                         <span role="alert">Max length exceeded</span>
                                                     )}
                                                 </div>
@@ -142,12 +157,15 @@ const CheckOut = () => {
                                                     id="address"
                                                     placeholder="Apartment, suite, unit etc. (optional)"
                                                     className="w-full h-12 pl-2 rounded-sm outline-none border-none bg-gray-200"
-                                                    {...register('address.apartment', { maxLength: 20 })}
+                                                    {...register('address', { required: true, maxLength: 20 })}
                                                     name='address.apartment'
                                                 />
-                                                {errors.address && errors.address && errors.address.type === "maxLength" && (
+                                                {errors.address && errors.address.type === "required" && (
+                                                    <span role="alert">This is required</span>
+                                                )}
+                                                {errors.address && errors.address.type === "maxLength" && (
                                                     <span role="alert">Max length exceeded</span>
-                                                )} 
+                                                )}
                                             </div>
 
                                             <div className="w-full px-4 mb-3">
@@ -157,10 +175,13 @@ const CheckOut = () => {
                                                     id="country"
                                                     placeholder="Country"
                                                     className="w-full h-12 pl-2 rounded-sm outline-none border-none bg-gray-200"
-                                                    {...register('address.country', { maxLength: 20 })}
+                                                    {...register('address', { required: true, maxLength: 20 })}
                                                     name='address.country'
                                                 />
-                                                {errors.address && errors.address.country && errors.address.country.type === "maxLength" && (
+                                                {errors.address && errors.address.type === "required" && (
+                                                    <span role="alert">This is required</span>
+                                                )}
+                                                {errors.address && errors.address.type === "maxLength" && (
                                                     <span role="alert">Max length exceeded</span>
                                                 )}
                                             </div>
@@ -172,13 +193,13 @@ const CheckOut = () => {
                                                         id="state"
                                                         placeholder="State"
                                                         className="w-full h-12 pl-2 rounded-sm outline-none border-none bg-gray-200"
-                                                        {...register('address.state', { required: true, maxLength: 20 })}
+                                                        {...register('address', { required: true, maxLength: 20 })}
                                                         name='address.state'
                                                     />
-                                                    {errors.address && errors.address.state && errors.address.state.type === "required" && (
+                                                    {errors.address && errors.address.type === "required" && (
                                                         <span role="alert">This is required</span>
                                                     )}
-                                                    {errors.address && errors.address.state && errors.address.state.type === "maxLength" && (
+                                                    {errors.address && errors.address.type === "maxLength" && (
                                                         <span role="alert">Max length exceeded</span>
                                                     )}
                                                 </div>
@@ -189,17 +210,14 @@ const CheckOut = () => {
                                                         id="zipcode"
                                                         placeholder="Postal / Zip"
                                                         className="w-full h-12 pl-2 rounded-sm outline-none border-none bg-gray-200"
-                                                        {...register('address.zipCode', { required: true, maxLength: 6, minLength:6 })}
-                                                        name='address.zipCode'
+                                                        {...register('address', { required: true, maxLength: 20 })}
+                                                        name='address.zipcode'
                                                     />
-                                                    {errors.address && errors.address.zipCode && errors.address.zipCode.type === "required" && (
+                                                    {errors.address && errors.address.type === "required" && (
                                                         <span role="alert">This is required</span>
                                                     )}
-                                                    {errors.address && errors.address.zipCode.type === "maxLength" && (
-                                                        <span role="alert">this is not valid zipcode</span>
-                                                    )}
-                                                    {errors.address && errors.address.zipCode.type === "minLength" && (
-                                                        <span role="alert">this is not valid zipcode</span>
+                                                    {errors.address && errors.address.type === "maxLength" && (
+                                                        <span role="alert">Max length exceeded</span>
                                                     )}
                                                 </div>
                                             </div>
@@ -213,10 +231,13 @@ const CheckOut = () => {
                                                     rows="7"
                                                     placeholder="Leave a comment about your order"
                                                     className="w-full h-12 pl-2 rounded-sm outline-none border-none bg-gray-200"
-                                                    {...register('comment', { maxLength: 20 })}
+                                                    {...register('comment', { required: true, maxLength: 20 })}
                                                     name='comment'
                                                 ></textarea>
-                                                {errors.comment && errors.comment.type === "maxLength" && (
+                                                {errors.address && errors.address.type === "required" && (
+                                                    <span role="alert">This is required</span>
+                                                )}
+                                                {errors.address && errors.address.type === "maxLength" && (
                                                     <span role="alert">Max length exceeded</span>
                                                 )}
 
@@ -233,24 +254,23 @@ const CheckOut = () => {
                                                 </div>
                                             </div>
                                         </div>
-
-                                    </div>
-                                    <div className="bg-gray-200 h-fit w-1/4">
-                                        <div className="px-4 py-8 ">
-                                            <div className="grid gap-8">
-                                                <h5 className='text-xl font-bold '>Cart Total</h5>
-                                                <div className="">
-                                                    <CheckOutPerproduct />
-                                                </div>
-                                                <ul className="grid gap-4 capitalize">
-                                                    <li className='flex justify-between'><span className='checkout_span'>subtotal:</span> <span className='checkout_span'>{totalAmount} ₹</span></li>
-                                                    <li className='flex justify-between'><span className='checkout_span'>delivery:</span> <span className='checkout_span'>50 ₹</span></li>
-                                                    <li className='flex justify-between'><span className='checkout_span'>total:</span> <span className='checkout_span'>{totalAmount === 0 ? 0 : totalAmount + 50} ₹</span></li>
-                                                </ul>
-                                                <div className="flex justify-center mt-8">
-                                                    <div className='w-4/5 bg-amber-500 h-12 rounded-sm grid place-content-center'>
-                                                        <button type='submit' className="text-gray-50">Checkout</button>
-                                                    </div>
+                                    </form>
+                                </div>
+                                <div className="bg-gray-200 h-fit w-1/4">
+                                    <div className="px-4 py-8 ">
+                                        <div className="grid gap-8">
+                                            <h5 className='text-xl font-bold '>Cart Total</h5>
+                                            <div className="">
+                                                <CheckOutPerproduct />
+                                            </div>
+                                            <ul className="grid gap-4 capitalize">
+                                                <li className='flex justify-between'><span>subtotal:</span> <span>{totalAmount} ₹</span></li>
+                                                <li className='flex justify-between'><span>delivery:</span> <span>50 ₹</span></li>
+                                                <li className='flex justify-between'><span>total:</span> <span>{totalAmount === 0 ? 0 : totalAmount + 50} ₹</span></li>
+                                            </ul>
+                                            <div className="flex justify-center mt-8">
+                                                <div className='w-4/5 bg-amber-500 h-12 rounded-sm grid place-content-center'>
+                                                    <NavLink to="/checkout" className="text-gray-50">Checkout</NavLink>
                                                 </div>
                                             </div>
                                         </div>
@@ -258,7 +278,8 @@ const CheckOut = () => {
                                 </div>
                             </div>
                         </div>
-                    </form>
+
+                    </div>
                 </div>}
             <Footer />
         </div>

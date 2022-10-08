@@ -9,7 +9,7 @@ import Login from "./Login/Login";
 import ProductDetail from "./ProductDetail/ProductDetail";
 import Register from "./Register/Register";
 import Shop from "./Shop/Shop";
-
+import Logout from "./Logout/Logout";
 
 export {
     About,
@@ -22,7 +22,8 @@ export {
     Login,
     ProductDetail,
     Register,
-    Shop
+    Shop,
+    Logout
 }
 
 

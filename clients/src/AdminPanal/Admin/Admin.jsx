@@ -5,24 +5,16 @@ import { ContextWrap } from '../../container/contexApi/States';
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { PageD } from '../PageData/PageD';
 import '../Admin.css'
-import Cookies from 'js-cookie'
 
 const Admin = () => {
-    const navigate = useNavigate();
     const [menu, setMenu] = useState(false)
     const DataSearch = useContext(ContextWrap);
     const [searchInput, setSearchInput] = useState();
 
 
-
     const searchType = () => {
         DataSearch.setAdminActive('Search Product')
         DataSearch.SearchData(searchInput)
-    }
-
-    const logOut = () => {
-        Cookies.remove('jwt')
-        navigate('/login');
     }
 
     return (
@@ -89,10 +81,10 @@ const Admin = () => {
                             </div>
                             <ul className="navbar-nav  justify-content-end">
                                 <li className="nav-item flex items-center">
-                                    <button onClick={logOut} className="flex items-center justify-center gap-2 w-fit h-12 mx-4">
+                                    <Link to='/logout' className="flex items-center justify-center gap-2 w-fit h-12 mx-4">
                                         <FaUserAlt className="text-gray-500" />
                                         <span className="text-gray-500">Log Out</span>
-                                    </button>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>

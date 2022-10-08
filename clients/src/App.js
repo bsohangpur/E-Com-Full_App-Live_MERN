@@ -1,18 +1,28 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { About, Blog, BlogDetail, Cart, CheckOut, Contact, Home, Login, ProductDetail, Register, Shop } from './pages/index';
+import { About, Blog, BlogDetail, Cart, CheckOut, Contact, Home, Login, ProductDetail, Register, Shop, Logout } from './pages/index';
 import Admin from './AdminPanal/Admin/Admin';
 import { Dashboard, AdminBlog, AddBlog, MainBlogEdit, MainProductEdit, AdminProduct, AddProduct, Profile, ProductSearch, Complain, ProfileEdit } from './AdminPanal/index'
 import Auth from './container/Authantication/Auth';
-import ReviewPage from './container/ReviewPage/ReviewPage';
+import Profiles from './pages/Profile/Profile.jsx'
+import { useDispatch } from 'react-redux';
+import { VerifyUser } from './container/Redux/Reducers/userSlice';
+import { useEffect } from 'react';
+import Conformation from './pages/Conformation/Conformation';
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(VerifyUser())
+  }, [dispatch])
+
   return (
     // <State>
     <BrowserRouter>
       <Routes>
-        <Route path='/review' element={<ReviewPage />} />
         <Route path='/' element={<Home />} />
         <Route path='/shop' element={<Shop />} />
+        <Route path='/conformation' element={<Conformation />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/blog' element={<Blog />} />
@@ -22,6 +32,8 @@ const App = () => {
         <Route path='/checkout' element={<CheckOut />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/logout' element={<Logout />} />
+        <Route path='/profile' element={<Profiles />} />
         <Route element={<Auth />}>
           <Route path='/admin' element={<Admin />} >
             <Route index element={<Dashboard />} />

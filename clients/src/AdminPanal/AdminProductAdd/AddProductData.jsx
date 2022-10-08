@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import "../../App.css";
 import { productButton, ProductUpdate } from '../../container/Redux/Reducers/productSlice';
-
+import {useNavigate} from 'react-router-dom'
 
 const AddProduct = () => {
     const dispatch = useDispatch();
-
+    const navigate = useNavigate()
     //product Input state
     const [title, SetTitle] = useState("");
     const [creater, SetCreater] = useState("");
@@ -40,7 +40,7 @@ const AddProduct = () => {
         for (let i = 0; i < categoriesValue.length; i++) {
             formData.append('category', categoriesValue[i]);
         }
-
+        navigate('/admin/product')
         dispatch(ProductUpdate(formData, "Add"));
         dispatch(productButton({Add:true}))
     }

@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter');
 body {
   scroll-behavior: smooth;
+  font-family: 'Bitter', sans-serif;
 }
 .scroll::-webkit-scrollbar {
   display: none;
@@ -29,6 +31,6 @@ input[type=number] {
 }
 
 .active{
-  color: #c0c4c4;
-  text-decoration: underline;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-style: oblique;
 }

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const url = 'http://localhost:3000/login/data'
+const url = '/login/data'
 
 export const STATUS = Object.freeze({
     Failed: 'failed',

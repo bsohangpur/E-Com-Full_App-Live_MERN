@@ -6,7 +6,8 @@ import { productButton, ProductUpdate } from "../../container/Redux/Reducers/pro
 
 const AdminAlert = (props) => {
     const dispatch = useDispatch();
-
+    //data from main page product from DB
+    const { id, functions, data, page } = props.product
     const comeBack = () => {
         dispatch(productButton({ Edit: false }));
         dispatch(productButton({ Delete: false }));
@@ -15,7 +16,7 @@ const AdminAlert = (props) => {
     }
 
     const finalDelete = async () => {
-        if (props.page === "Blog") {
+        if (page === "Blog") {
             if (props.function === "Edit") {
                 dispatch(BlogUpdate(props.data, 'Edit', props.id));
                 dispatch(blogButton({ Edit: true }));
@@ -28,32 +29,34 @@ const AdminAlert = (props) => {
             }
         }
         else {
-            if (props.function === "Edit") {
-                dispatch(ProductUpdate(props.data, 'Edit', props.data.id));
+            if (functions === "Edit") {
+                dispatch(ProductUpdate(data, 'Edit', id));
                 dispatch(productButton({ Edit: false }));
             }
             else {
-                dispatch(ProductUpdate('', 'Delete', props.data));
+                dispatch(ProductUpdate('', 'Delete', id));
                 dispatch(productButton({ Delete: false }));
             }
         }
     }
 
     return (
-        <div style={{ height: "85vh" }} className="w-full absolute z-10 flex justify-center items-center">
-            <div className="w-1/3 h-48 bg-slate-200 fixed grid place-items-center">
+        <div style={{ top: "40vh" }} className="absolute z-10 flex justify-center items-center">
+            <div className="w-1/3 h-48 bg-slate-200 fixed grid place-items-center border-2 border-zinc-400">
                 <div className="">
                     {
-                        props.function === "Edit"
+                        functions === "Edit"
                             ?
-                            <p className="text-center">Are you sure to update the {props.page} it will remove past Data</p>
+                            <p className="text-center">Are you sure to update the {page} it will remove past Data</p>
                             :
-                            <p className="text-center">Are you sure to delete the {props.page} it will remove permanently</p>
+                            <p className="text-center">Are you sure to delete the {page} it will remove permanently</p>
                     }
                 </div>
                 <div className="flex gap-4">
-                    <button onClick={() => finalDelete()} className='w-32 h-10 bg-red-500 rounded-sm cursor-pointer capitalize' type="submit"></button>
-                    <button type="submit" onClick={() => comeBack()} className="w-32 h-10 bg-gray-300 rounded-sm">Cancel</button>
+                    <button onClick={() => finalDelete()} className=' hover:bg-transparent hover:text-red-900 hover:border-2 hover:border-red-700 w-32 h-10 bg-red-500 text-slate-50 rounded-sm cursor-pointer capitalize' type="submit">
+                        {functions}
+                    </button>
+                    <button type="submit" onClick={() => comeBack()} className=" hover:bg-transparent hover:text-gray-900 hover:border-2 hover:border-gray-700 w-32 h-10 bg-gray-500 text-slate-50 rounded-sm">Cancel</button>
                 </div>
             </div>
         </div>

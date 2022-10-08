@@ -1,8 +1,9 @@
 import React from 'react';
-import { AiOutlineShoppingCart, AiOutlineMenu, AiOutlineUser, AiOutlineClose } from "react-icons/ai";
+import { AiOutlineShoppingCart, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import Dropdown from './Dropdown/Dropdown';
 
 
 const NavBar = () => {
@@ -15,9 +16,9 @@ const NavBar = () => {
     }
 
     return (
-        <div>
+        <div className=''>
             {/* Start Header/Navigation */}
-            <nav className="bg-cyan-800 text-slate-50" arial-label="navigation bar">
+            <nav className="bg-cyan-800 text-slate-50">
 
                 <div className="relative md:static py-4 md:py-8 md:mx-16 flex flex-wrap justify-between items-center">
                     <h1 className="xl:text-3xl text-gray-300 hover:text-gray-100 hover:underline lg:text-2xl md:text-xl px-4">Lulucollection<span>.</span></h1>
@@ -36,9 +37,9 @@ const NavBar = () => {
                             <li><NavLink className="hover:underline hover:text-gray-100" to="/contact">Contact us</NavLink></li>
                         </ul>
 
-                        <ul className="custom-navbar-cta navbar-nav flex md:flex-row flex-col gap-4 mb-2 md:mb-0">
-                            <li><NavLink className="text-gray-100 relative" to='/cart'><AiOutlineShoppingCart className='text-3xl' /><p className={`${data.length>0 ? 'absolute text-sm -top-2 right-0.5 z-10 bg-green-500 grid place-items-center rounded-full text-white w-5 h-5 hover:bg-white hover:text-green-500':'hidden'}`}>{data.length}</p> </NavLink></li>
-                            <li><NavLink className="text-gray-100" to="/login"><AiOutlineUser className='text-2xl' /></NavLink></li>
+                        <ul className="custom-navbar-cta navbar-nav flex md:flex-row flex-col gap-4 mb-2 items-center md:mb-0">
+                            <li><NavLink className="text-gray-100 relative" to='/cart'><AiOutlineShoppingCart className='text-2xl' /><p className={`${data.length>0 ? 'absolute text-sm -top-2 right-0.5 z-10 bg-green-500 grid place-items-center rounded-full text-white w-5 h-5 hover:bg-white hover:text-green-500':'hidden'}`}>{data.length}</p> </NavLink></li>
+                            <li><Dropdown/></li>
                         </ul>
                     </div>
                 </div>

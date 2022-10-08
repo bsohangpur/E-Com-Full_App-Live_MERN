@@ -20,13 +20,31 @@ const RegisterSchema = new mongodb.Schema({
         state: { type: String },
         zipCode: { type: Number, min: 111111, max: 999999 }
     },
-    comment: { type: String },
     checkin: { type: Boolean },
     token: { type: String },
     admin: {
-        admin: { type: Boolean },
-        type: { type: Number }
-    }
+        admin: { type: Boolean, default: false },
+        type: { type: Number, default: 1996 }
+    },
+    cartProduct: [{
+        title: {
+            type: String,
+            required: true
+        },
+        priceSell: {
+            type: Number,
+            required: true
+        },
+        quantity: {
+            type: String,
+            required: true,
+            default: 1
+        },
+        productId: { type: String },
+        image: { type: String },
+        imageAlt: { type: String },
+        createdOn: { type: Date, default: Date.now }
+    }]
 })
 
 RegisterSchema.methods.genrateToken = async function () {

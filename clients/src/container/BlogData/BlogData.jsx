@@ -26,7 +26,7 @@ const BlogData = (props) => {
                 <div key={data._id} className={`${props.page === 'home'?'md:w-1/3':'md:w-fit'} mb-5 md:mb-0`}>
                     <div className="post-entry">
                         <Link to={`/blog/${data.title}`} className="hover:opacity-80 relative flex justify-center items-center">
-                            <img src={`http://localhost:3000/${data.image[0]}`} alt={data.imageAlt[0]} className=" " />
+                            <img src={`/${data.image[0]}`} alt={data.imageAlt[0]} className=" " />
                             <span className="absolute grid place-items-center w-full h-full font-bold capitalize lg:text-lg transition-opacity opacity-0 hover:opacity-100 ">learn more</span>
                         </Link>
                         <div className="post-content-entry">

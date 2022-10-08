@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import NavBar from '../../constant/Navbar/NavBar';
 import Footer from '../../constant/Footer/Footer';
 import PageNotFound from '../../constant/PageNotFound/PageNotFound';
 import CartPerProduct from './CartPerProduct';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { FetchChart } from '../../container/Redux/Reducers/cartSlice';
+import Loading from '../../constant/Loading/Loading';
 
 const Cart = () => {
-    const { data, totalAmount } = useSelector(state => state.cart);
+    const { data, totalAmount, status } = useSelector(state => state.cart);
+    const user = useSelector(state => state.user);
+    const dispatch = useDispatch();
+    const id = user.data.id
+    const Data = user.data.id===undefined ? data :  data.data
+    
+    useEffect(()=>{
+        dispatch(FetchChart(id))
+    },[dispatch, id])
 
+
+    if(status==='loading'){
+        return <Loading/>
+    }
+    else if(status==='error'){
+        return <h1>Somethig wents wrong!</h1>
+    }
+    else{
     return (
         <div>
             <NavBar />
@@ -37,10 +55,10 @@ const Cart = () => {
                                                 </tr>
                                             </thead>
                                             {
-                                                data.length > 0
+                                                Data.length > 0
                                                     ?
-                                                    data.map((value) => {
-                                                        return <CartPerProduct key={value._id} value={value} />
+                                                    Data.map((value, index) => {
+                                                        return <CartPerProduct key={index} value={value} />
                                                     })
                                                     :
                                                     ''
@@ -69,7 +87,7 @@ const Cart = () => {
             </div>
             <Footer />
         </div>
-    )
+    )}
 }
 
 export default Cart

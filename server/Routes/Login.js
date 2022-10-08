@@ -7,7 +7,8 @@ const dotenv = require("dotenv").config();
 
 express.post('/data', async (req, res) => {
     const { username, email, password, conformpass } = req.body;
-
+    const Username = username.toLowerCase()
+    const Email = email.toLowerCase()
     // finding the email and username data from DB
     const emailMatch = await RegisterData.findOne({ email });
     const usernameMatch = await RegisterData.findOne({ username });

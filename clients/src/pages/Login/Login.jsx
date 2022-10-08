@@ -32,7 +32,8 @@ const Login = () => {
 
     if (Status === STATUS.Success) {
         setTimeout(() => {
-            navigate('/admin');
+            navigate('/');
+            window.location.reload();
             dispatch(setStatus(''))
         }, 1000);
     }
